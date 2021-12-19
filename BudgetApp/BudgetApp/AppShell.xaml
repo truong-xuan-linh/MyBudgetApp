@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:BudgetApp"
+             x:Class="BudgetApp.AppShell"
+             Shell.NavBarIsVisible="False">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ThemeColor">Red</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BgColor">#F0F0F0</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}"></Setter>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"></Setter>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayColor}"></Setter>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}"></Setter>
+                        
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"></Style>
+        </ResourceDictionary>
+
+    </Shell.Resources>
+
+    <TabBar Route="main">
+        <Tab Title="Transaction" Icon="transaction.png">
+            <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
+        </Tab>
+
+        <Tab Title="Category" Icon="category.png">
+            <ShellContent ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
+        </Tab>
+
+        <Tab Title="Report" Icon="report.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ReportPage}"></ShellContent>
+        </Tab>
+
+        <Tab Title="Account" Icon="account.png">
+            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>

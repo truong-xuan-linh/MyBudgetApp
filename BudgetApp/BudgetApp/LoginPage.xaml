@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetApp.LoginPage"
+             BackgroundColor="#fffee6">
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" >
+            <Image Source="applogo.jpg" WidthRequest="180" HeightRequest="180"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="User Name: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
+                       VerticalOptions="Center"></Label>
+                <Entry Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="uName"/>
+
+                <Label Text="Pass Word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
+                       VerticalOptions="Center"></Label>
+                <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                       x:Name="pWord"/>
+
+                <Button Text="Sign in" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        x:Name="loginBtn" 
+                        TextColor="#ff3847"
+                        BorderColor="#75c7fb"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        BackgroundColor="#fffee6"
+                        Clicked="loginBtn_Clicked"/>
+
+                <Label HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don't have an account? " TextColor="#75c7fb"/>
+                            <Span Text="Sign Up" TextColor="#ff3847" FontAttributes="Bold" TextDecorations="Underline"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

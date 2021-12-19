@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetApp.SignupPage"
+             BackgroundColor="#fffee6">
+    <StackLayout Padding="40" VerticalOptions="Center" >
+        <Label Text="SIGN UP" TextColor="#ff3847" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="User Name: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
+                   VerticalOptions="Center"></Label>
+            <Entry Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="uName"/>
+
+            <Label Text="Pass Word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
+                   VerticalOptions="Center"></Label>
+            <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                   x:Name="pWord"/>
+
+            <Button Text="Sign up" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="SignUpBtn" 
+                    TextColor="#ff3847"
+                    BorderColor="#75c7fb"
+                    BorderWidth="1.5"
+                    CornerRadius="50"
+                    BackgroundColor="#fffee6"
+                    Clicked="SignUpBtn_Clicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

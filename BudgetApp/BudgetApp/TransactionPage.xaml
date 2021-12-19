@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetApp.TransactionPage"
+             xmlns:d ="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable ="d"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="green.jpg" Aspect="Fill" HeightRequest="150" VerticalOptions="StartAndExpand"></Image>
+            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,50">
+                <Label Text="Total:" TextColor="White" FontSize="40" FontAttributes="Bold" VerticalOptions="Center"  ></Label>
+                <Label Text="1000000" TextColor="White" FontSize="30" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+            </StackLayout>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="30,-40,30,0" Padding="0" HeightRequest="80" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand">
+                        <Image Source="income.png" HeightRequest="30" HorizontalOptions="Center" ></Image>
+                        <StackLayout Spacing="2" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Income" TextColor="Blue" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Label Text="+1000000000000"  TextColor="Blue"  FontSize="14" HorizontalOptions="Center"></Label>
+                        </StackLayout>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand">
+                        <Image Source="expense.png" HeightRequest="30" HorizontalOptions="Center" ></Image>
+                        <StackLayout Spacing="2" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Expense" TextColor="Red" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Label Text="-2000" TextColor="Red"  FontSize="14" HorizontalOptions="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <ListView x:Name="IncomeExpenseList" IsGroupingEnabled="True" ItemsSource="{Binding Money}" SeparatorVisibility="None" Grid.Row="2" Margin="20,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <TextCell Text ="{Binding Date}" TextColor="AliceBlue">
+
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="White" BorderColor="Black" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                                <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Icon}" Grid.Column="0" HeightRequest="15" VerticalOptions="Start"></Image>
+                                    <Label Grid.Column="1" Text="{Binding Category}" TextColor="Black" VerticalOptions="Start"></Label>
+                                    <Label Grid.Column="2" Text="{Binding CategoryMoney}" TextColor="{Binding CategoryColor}" VerticalOptions="End"></Label>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
