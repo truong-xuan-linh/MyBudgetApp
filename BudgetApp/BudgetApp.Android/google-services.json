@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "62328639394",
+    "project_id": "mybuget-vinhlinh",
+    "storage_bucket": "mybuget-vinhlinh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62328639394:android:abf064c59fec2d489e2cfb",
+        "android_client_info": {
+          "package_name": "com.companyname.budgetapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62328639394-bdi80ujdelvapr916lg86784p954ip21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcBicURjNUhS3witQbtdcxfTCjiVpEn2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62328639394-bdi80ujdelvapr916lg86784p954ip21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

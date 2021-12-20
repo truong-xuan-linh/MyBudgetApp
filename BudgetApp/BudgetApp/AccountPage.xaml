@@ -4,9 +4,7 @@
              x:Class="BudgetApp.AccountPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Account Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign out" x:Name="SignOutBtn" Clicked="SignOutBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
