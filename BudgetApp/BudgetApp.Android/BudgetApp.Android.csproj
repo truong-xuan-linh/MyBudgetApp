@@ -84,9 +84,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\expense.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BudgetApp\BudgetApp.csproj">
       <Project>{BEAC1751-FF4C-4F2E-974C-899C9BD33501}</Project>
       <Name>BudgetApp</Name>
@@ -94,12 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\account.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\income.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\green.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\category.png" />
@@ -120,16 +111,13 @@
     <AndroidResource Include="Resources\drawable\salaryicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\income2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\expense2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\expense3.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\income3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\orange.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

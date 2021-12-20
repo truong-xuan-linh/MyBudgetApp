@@ -14,14 +14,14 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Frame Padding="0" CornerRadius="15" IsClippedToBounds="True" Margin="0,-25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
-                <Image  Source="green.jpg" Aspect="Fill" HeightRequest="150" VerticalOptions="StartAndExpand"></Image>
+            <Frame Padding="0" CornerRadius="20" IsClippedToBounds="True" Margin="0,-25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                <Image  Source="orange.jpg" Aspect="Fill" HeightRequest="150" VerticalOptions="StartAndExpand"></Image>
             </Frame>
             <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,50">
                 <Label Text="Total:" TextColor="White" FontSize="40" FontAttributes="Bold" VerticalOptions="Center"  ></Label>
                 <Label Text="1000000" TextColor="White" FontSize="30" FontAttributes="Bold" VerticalOptions="Center" ></Label>
             </StackLayout>
-            <Frame Grid.Row="1" HasShadow="True" CornerRadius="7" Margin="30,-40,30,0" Padding="0" HeightRequest="90" VerticalOptions="Start" BackgroundColor="white">
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="7" Margin="30,-40,30,0" Padding="0" HeightRequest="90" VerticalOptions="Start" BackgroundColor="White">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -30,16 +30,16 @@
                     <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand">
                         <Image Source="income3.png" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="Center" ></Image>
                         <StackLayout Spacing="2" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Income" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                            <Label Text="+1000000000000"  TextColor="Blue"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                            <Label Text="Income" TextColor="#75c7fb" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Label Text="+1000000000000"  TextColor="#75c7fb"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                         </StackLayout>
 
                     </StackLayout>
                     <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand">
                         <Image Source="expense3.png" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="Center" ></Image>
                         <StackLayout Spacing="2" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Expense" TextColor="Red" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                            <Label Text="-2000" TextColor="Red"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                            <Label Text="Expense" TextColor="#ff3847" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Label Text="-2000" TextColor="#ff3847"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
