@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BudgetApp
 {
-    class DateBudget
+    class DateBudget: List<DetailBudget>
     {
         public string Date { get; set; }
         public int Expense { get; set; }
