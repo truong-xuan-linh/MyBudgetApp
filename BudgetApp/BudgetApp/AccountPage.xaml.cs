@@ -12,9 +12,20 @@ namespace BudgetApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+        MyFirebaseAuthentication myAuth;
         public AccountPage()
         {
             InitializeComponent();
+            myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+        }
+
+        private void SignOutBtn_Clicked(object sender, EventArgs e)
+        {
+            var signOut = myAuth.SignOut();
+            if (signOut)
+            {
+                Application.Current.MainPage = new LoginPage();
+            }
         }
     }
 }
