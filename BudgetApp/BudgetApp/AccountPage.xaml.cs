@@ -17,6 +17,7 @@ namespace BudgetApp
         {
             InitializeComponent();
             myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+            EmailLabel.Text = myAuth.GetUname();
         }
 
         private void SignOutBtn_Clicked(object sender, EventArgs e)
@@ -26,6 +27,11 @@ namespace BudgetApp
             {
                 Application.Current.MainPage = new LoginPage();
             }
+        }
+
+        private void CurrencyBtn_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

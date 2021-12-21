@@ -13,5 +13,6 @@ namespace BudgetApp
         bool SignOut();
         bool IsSignIn();
         string GetUid();
+        string GetUname();
     }
 }
