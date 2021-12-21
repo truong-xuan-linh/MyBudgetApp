@@ -31,7 +31,7 @@
                     x:Name="SignUpBtn" 
                     TextColor="#ff3847"
                     BorderColor="#75c7fb"
-                    BorderWidth="1.5"
+                    BorderWidth="2"
                     CornerRadius="50"
                     BackgroundColor="#fffee6"
                     Clicked="SignUpBtn_Clicked"/>

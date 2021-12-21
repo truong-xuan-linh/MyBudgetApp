@@ -11710,7 +11710,7 @@ namespace BudgetApp.Droid
 			public const int btn_radio_on_to_off_mtrl_animation = 2131165288;
 			
 			// aapt resource value: 0x7F070069
-			public const int category = 2131165289;
+			public const int categories = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
 			public const int common_full_open_on_phone = 2131165290;
@@ -11924,6 +11924,9 @@ namespace BudgetApp.Droid
 			
 			// aapt resource value: 0x7F0700B0
 			public const int transaction = 2131165360;
+			
+			// aapt resource value: 0x7F0700B1
+			public const int user = 2131165361;
 			
 			static Drawable()
 			{

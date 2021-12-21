@@ -7,9 +7,9 @@
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">Red</Color>
-            <Color x:Key="GrayColor">Gray</Color>
-            <Color x:Key="BgColor">#F0F0F0</Color>
+            <Color x:Key="ThemeColor">#F01110</Color>
+            <Color x:Key="GrayColor">#B7ACA9</Color>
+            <Color x:Key="BgColor">white</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}"></Setter>
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"></Setter>
@@ -27,7 +27,7 @@
             <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Category" Icon="category.png">
+        <Tab Title="Category" Icon="categories.png">
             <ShellContent ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
         </Tab>
 
@@ -35,7 +35,7 @@
             <ShellContent ContentTemplate="{DataTemplate views:ReportPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Account" Icon="account.png">
+        <Tab Title="Account" Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
         </Tab>
     </TabBar>
