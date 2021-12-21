@@ -31,5 +31,10 @@ namespace BudgetApp
                 await DisplayAlert("Sign Up Failed", "Email or Password are incorrect, Please try again!", "Ok");
             }
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new LoginPage();
+        }
     }
 }

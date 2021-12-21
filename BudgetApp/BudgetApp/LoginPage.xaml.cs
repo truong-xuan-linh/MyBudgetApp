@@ -29,7 +29,7 @@ namespace BudgetApp
             }
             else
             {
-                await DisplayAlert("Authentication Failed", "Email or Password are incorrect, Please try again!", "Ok");
+                await DisplayAlert("Sign in Failed", "Email or Password are incorrect, Please try again!", "Ok");
             }
         }
 
@@ -37,7 +37,7 @@ namespace BudgetApp
         {
 
             Application.Current.MainPage = new SignupPage();
-            
+      
         }
     }
 }
