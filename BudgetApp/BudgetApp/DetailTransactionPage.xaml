@@ -56,7 +56,7 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </Grid.GestureRecognizers>
                     </Grid>
-                    <ListView x:Name="categoryListt" BackgroundColor="Bisque" Grid.Row="1"  IsGroupingEnabled="True" GroupDisplayBinding="{Binding categoryType}" SeparatorVisibility="None" Margin="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="categoryList_ItemSelected">
+                    <ListView x:Name="categoryListt" BackgroundColor="White" Grid.Row="1"  IsGroupingEnabled="True" GroupDisplayBinding="{Binding categoryType}" SeparatorVisibility="None" Margin="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="categoryList_ItemSelected">
                         <ListView.GroupHeaderTemplate >
                             <DataTemplate>
                                 <ViewCell Height="40">

@@ -5,9 +5,12 @@ using BudgetApp;
 
 namespace BudgetApp
 {
+    
     public partial class App : Application
     {
         MyFirebaseAuthentication myAuth;
+        
+
         public App()
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace BudgetApp
             {
                 MainPage = new LoginPage();
             }
+            
         }
 
         protected override void OnStart()

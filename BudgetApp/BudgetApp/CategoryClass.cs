@@ -6,6 +6,7 @@ namespace BudgetApp
 {
     public class CategoryClass
     {
+
         public string categoryType { get; set; }
         public string categoryName { get; set; }
         public string categoryImg { get; set; }

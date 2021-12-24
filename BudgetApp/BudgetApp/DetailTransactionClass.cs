@@ -14,6 +14,6 @@ namespace BudgetApp
         public string transactionColor { get; set; }
         public int transactionMoney { get; set; }
         public string transactionDay { get; set; }
-       
+        public string categoryType { get; set; }
     }
 }

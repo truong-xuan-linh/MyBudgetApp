@@ -43,24 +43,35 @@ namespace BudgetApp
             Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Food", categoryImg = "foodicon.png" });
             Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Shopping", categoryImg = "shoppingicon.png" });
             categoryListItem.Add(Expense);
-        }
-        public DetailTransactionPage(DetailTransactionClass budget)
-        {
-            InitializeComponent();
-            entryMoney.Text = budget.transactionMoney.ToString();
-            datePicker.Date = DateTime.ParseExact(budget.transactionDay, "d/M/yyyy", CultureInfo.InvariantCulture);
-            categoryIcon.Source = budget.icon;
+
             
         }
+
+        DetailTransactionClass transaction;
+        public DetailTransactionPage(DetailTransactionClass transaction)
+        {
+            InitializeComponent();
+            CategoryListInit();
+            categoryListt.ItemsSource = categoryListItem;
+            entryMoney.Text = transaction.transactionMoney.ToString();
+            datePicker.Date = DateTime.ParseExact(transaction.transactionDay, "d/M/yyyy", CultureInfo.InvariantCulture);
+            categoryIcon.Source = transaction.icon;
+            chooseCategory.Text = transaction.transactionName;
+            categoryTypeName = transaction.categoryType;
+            this.transaction = transaction;
+
+            
+        }
+
+        
         private async void Ckecked_Clicked(object sender, EventArgs e)
         {
 
 
             string transactionName = chooseCategory.Text;
 
-            DetailTransactionClass newBudget = new DetailTransactionClass();
-            newBudget.transactionName = transactionName;
-            newBudget.transactionDay = datePicker.Date.ToString("d/M/yyyy", CultureInfo.InvariantCulture);
+            transaction.transactionName = transactionName;
+            transaction.transactionDay = datePicker.Date.ToString("d/M/yyyy", CultureInfo.InvariantCulture);
 
             if (categoryIcon.Source is Xamarin.Forms.FileImageSource)
             {
@@ -72,27 +83,26 @@ namespace BudgetApp
 
             if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png"))
             {
-                newBudget.transactionMoney = Int32.Parse(entryMoney.Text);
+                transaction.transactionMoney = Int32.Parse(entryMoney.Text);
 
 
-                newBudget.icon = categoryImgName;
-
+                transaction.icon = categoryImgName;
+                
                 if (categoryTypeName == "Expense")
                 {
-                    newBudget.transactionColor = "red";
+                    transaction.transactionColor = "red";
                 }
                 else
                 {
-                    newBudget.transactionColor = "blue";
+                    transaction.transactionColor = "blue";
                 }
 
                 TransactionDatabase db = new TransactionDatabase();
-                Console.WriteLine(newBudget);
-                if (db.AddNewTransaction(newBudget))
+                if (db.UpdateTransaction(transaction))
                 {
                     await DisplayAlert("Successful", "Update transaction successfully", "OK");
 
-                    Navigation.PushAsync(new AppShell());
+                    Navigation.PushAsync(new TransactionPage());
                 }
                 else
                 {
@@ -108,7 +118,7 @@ namespace BudgetApp
         private void Category_Clicked(object sender, EventArgs e)
         {
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-
+            
 
             if (MyDraggableView.Height == 0)
             {
@@ -153,8 +163,18 @@ namespace BudgetApp
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Successful", "Delete transaction sucessfully", "Ok");
-            Navigation.PushAsync(new TransactionPage());
+            TransactionDatabase db = new TransactionDatabase();
+            if (db.DeleteTransaction(transaction))
+            {
+                await DisplayAlert("Successful", "Delete transaction successfully", "OK");
+                Navigation.PushAsync(new TransactionPage());
+            }
+            else
+            {
+                DisplayAlert("Fail", "Delete transaction failed", "OK");
+            }
+
+            
         }
 
         private void categoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)

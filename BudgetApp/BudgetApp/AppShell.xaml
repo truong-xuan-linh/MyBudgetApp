@@ -7,8 +7,8 @@
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">#F01110</Color>
-            <Color x:Key="GrayColor">#B7ACA9</Color>
+            <Color x:Key="ThemeColor">Orange</Color>
+            <Color x:Key="GrayColor">black</Color>
             <Color x:Key="BgColor">white</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}"></Setter>

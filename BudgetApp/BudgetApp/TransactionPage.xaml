@@ -19,7 +19,7 @@
             </Frame>
             <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,50">
                 <Label Text="Total:" TextColor="White" FontSize="40" FontAttributes="Bold" VerticalOptions="Center"  ></Label>
-                <Label Text="1000000" TextColor="White" FontSize="30" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+                <Label x:Name="totalMoney" TextColor="White" FontSize="30" FontAttributes="Bold" VerticalOptions="Center" ></Label>
             </StackLayout>
             <StackLayout Grid.Row="1" Orientation="Horizontal">
                 <Frame HasShadow="True" CornerRadius="7" Margin="30,-40,0,0" Padding="0" WidthRequest="200" HeightRequest="90" VerticalOptions="Start" BackgroundColor="White">
@@ -29,7 +29,7 @@
                             <Image Source="income3.png" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="Center" ></Image>
                             <StackLayout Spacing="2" HorizontalOptions="Center">
                                 <Label Text="Income" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                <Label Text="+1000000000000"  TextColor="Blue"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                                <Label x:Name="Income"  TextColor="Blue"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                             </StackLayout>
                         </StackLayout>
 
@@ -44,7 +44,7 @@
                             <Image Source="expense3.png" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="Center" ></Image>
                             <StackLayout Spacing="2" HorizontalOptions="CenterAndExpand">
                                 <Label Text="Expense" TextColor="#ff3847" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                <Label Text="-2000" TextColor="#ff3847"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                                <Label x:Name ="Expense" TextColor="#ff3847"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
@@ -67,7 +67,7 @@
                                 <Label Text="Income: +" FontSize="14"  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"></Label>
                                 <Label Text="{Binding income}" FontSize="14" Grid.Column="2" VerticalOptions="Center"></Label>
                                 <Label Text="Expense:" FontSize="14" Grid.Column="3" VerticalOptions="Center"></Label>
-                                <Label Text="{Binding income}" FontSize="14" Grid.Column="4" Margin="0,0,10,0" VerticalOptions="Center"></Label>
+                                <Label Text="{Binding expense}" FontSize="14" Grid.Column="4" Margin="0,0,10,0" VerticalOptions="Center"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

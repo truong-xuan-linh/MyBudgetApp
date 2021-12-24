@@ -111,10 +111,13 @@ namespace BudgetApp
                 if (categoryTypeName == "Expense")
                 {
                     newBudget.transactionColor = "red";
+                    newBudget.categoryType = "Expense";
                 }
                 else
                 {
+                    
                     newBudget.transactionColor = "blue";
+                    newBudget.categoryType = "Income";
                 }
                 
                 TransactionDatabase db = new TransactionDatabase();
@@ -122,8 +125,8 @@ namespace BudgetApp
                 if (db.AddNewTransaction(newBudget))
                 {
                     await DisplayAlert("Successful", "Add new transaction successfully", "OK");
-                    
-                    Navigation.PushAsync(new AppShell());
+
+                    Application.Current.MainPage = new AppShell();
                 }
                 else
                 {
@@ -141,6 +144,8 @@ namespace BudgetApp
             chooseCategory.Text = budgetSelected.categoryName;
             categoryIcon.Source = budgetSelected.categoryImg;
             categoryTypeName = budgetSelected.categoryType;
+
+            
         }
 
     }
