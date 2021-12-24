@@ -54,6 +54,12 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.DeviceOrientation">
+      <Version>1.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Auth">
       <Version>121.0.1.4</Version>
     </PackageReference>
@@ -62,6 +68,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>2.3.0.763-beta</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirebaseAuthentication.cs" />
@@ -129,6 +138,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\applogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plusicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\scheduleicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\moneyicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\questionicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkedicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\cancelicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\binicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

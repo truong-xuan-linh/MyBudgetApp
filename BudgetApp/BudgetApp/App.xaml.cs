@@ -11,6 +11,9 @@ namespace BudgetApp
         public App()
         {
             InitializeComponent();
+            TransactionDatabase db = new TransactionDatabase();
+            db.CreateDatabase();
+
             myAuth = DependencyService.Get<MyFirebaseAuthentication>();
             if (myAuth.IsSignIn())
             {

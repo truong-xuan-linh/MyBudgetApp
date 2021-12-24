@@ -7,28 +7,32 @@
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">Red</Color>
-            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="ThemeColor">red</Color>
+            <Color x:Key="GrayColor">Black</Color>
             <Color x:Key="BgColor">#F0F0F0</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}"></Setter>
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"></Setter>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayColor}"></Setter>
                 <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}"></Setter>
-                        
+
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"></Style>
         </ResourceDictionary>
 
     </Shell.Resources>
-
-    <TabBar Route="main">
-        <Tab Title="Transaction" Icon="transaction.png">
-            <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
+    <TabBar x:Name="TabBar" Route="main" >
+        <Tab x:Name="Transactions"  Title="Transaction" Icon="transaction.png">
+            <ShellContent x:Name="Transaction" Route="Transaction" ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Category" Icon="category.png">
             <ShellContent ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
+        </Tab>
+        
+        <Tab Icon="plusicon.png" >
+      
+            <ShellContent  ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Report" Icon="report.png">
@@ -39,4 +43,6 @@
             <ShellContent ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
         </Tab>
     </TabBar>
+    
+    
 </Shell>
