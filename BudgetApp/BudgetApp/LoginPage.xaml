@@ -18,11 +18,11 @@
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="User Name: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
+                <Label Text="Email: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
                        VerticalOptions="Center"></Label>
                 <Entry Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="uName"/>
 
-                <Label Text="Pass Word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
+                <Label Text="Pass word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
                        VerticalOptions="Center"></Label>
                 <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
                        x:Name="pWord"/>
@@ -31,7 +31,7 @@
                         x:Name="loginBtn" 
                         TextColor="#ff3847"
                         BorderColor="#75c7fb"
-                        BorderWidth="1.5"
+                        BorderWidth="2"
                         CornerRadius="50"
                         BackgroundColor="#fffee6"
                         Clicked="loginBtn_Clicked"/>

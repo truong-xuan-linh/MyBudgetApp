@@ -24,6 +24,12 @@ namespace BudgetApp.Droid
             return user;
         }
 
+        public string GetUname()
+        {
+            var username = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;
+            return username.Email;
+        }
+
         public bool IsSignIn()
         {
             var user = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;

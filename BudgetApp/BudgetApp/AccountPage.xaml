@@ -3,8 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.AccountPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Sign out" x:Name="SignOutBtn" Clicked="SignOutBtn_Clicked"/>
+        <StackLayout Padding="40">
+            <Image Source="accountlogo.png" WidthRequest="120" HeightRequest="120"/>
+            <Label x:Name="EmailLabel" HorizontalOptions="Center" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+            
+            <Button Text="Select Currency" x:Name="CurrencyBtn" 
+                    TextColor="#ff3847"
+                    BorderColor="#75c7fb"
+                    BorderWidth="2"
+                    CornerRadius="20"
+                    BackgroundColor="White"
+                    Clicked="CurrencyBtn_Clicked"/>
+            
+            <Button Text="Sign out" x:Name="SignOutBtn" 
+                    TextColor="#ff3847"
+                    BorderColor="#75c7fb"
+                    BorderWidth="2"
+                    CornerRadius="20"
+                    BackgroundColor="White"
+                    Clicked="SignOutBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

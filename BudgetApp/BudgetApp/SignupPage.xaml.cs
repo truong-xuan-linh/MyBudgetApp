@@ -21,21 +21,20 @@ namespace BudgetApp
 
         private async void SignUpBtn_Clicked(object sender, EventArgs e)
         {
-            var user = myAuth.SignUpWithEmailAndPassword(uName.Text, pWord.Text);
-            if (user != null)
+            string user = await myAuth.SignUpWithEmailAndPassword(uName.Text, pWord.Text);
+            if (user != string.Empty)
             {
-                await DisplayAlert("Success", "Account successfully created", "Ok");
-                var signout = myAuth.SignOut();
-
-                if (signout)
-                {
-                    Application.Current.MainPage = new AppShell();
-                }
-                else
-                {
-                    await DisplayAlert("ERROR", "Something went wrong, plese try again", "Ok");
-                }
+                Application.Current.MainPage = new AppShell();
             }
+            else
+            {
+                await DisplayAlert("Sign Up Failed", "Email or Password are incorrect, Please try again!", "Ok");
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }
