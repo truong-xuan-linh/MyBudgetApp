@@ -100,43 +100,48 @@ namespace BudgetApp
                 // Access the file that was specified:-
                 categoryImgName = objFileImageSource.File;
             }
-
-            if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png"))
+            try
             {
-                newBudget.transactionMoney = Int32.Parse(entryMoney.Text);
-
-               
-                newBudget.icon = categoryImgName;
-
-                if (categoryTypeName == "Expense")
+                if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
                 {
-                    newBudget.transactionColor = "red";
-                    newBudget.categoryType = "Expense";
+                    newBudget.transactionMoney = Int32.Parse(entryMoney.Text);
+
+
+                    newBudget.icon = categoryImgName;
+
+                    if (categoryTypeName == "Expense")
+                    {
+                        newBudget.transactionColor = "red";
+                        newBudget.categoryType = "Expense";
+                    }
+                    else
+                    {
+
+                        newBudget.transactionColor = "#3366CC";
+                        newBudget.categoryType = "Income";
+                    }
+
+                    TransactionDatabase db = new TransactionDatabase();
+                    Console.WriteLine(newBudget);
+                    if (db.AddNewTransaction(newBudget))
+                    {
+                        await DisplayAlert("Successful", "Add new transaction successfully", "OK");
+
+                        Application.Current.MainPage = new AppShell();
+                    }
+                    else
+                    {
+                        DisplayAlert("Fail", "Add new transaction failed", "OK");
+                    }
                 }
                 else
                 {
-                    
-                    newBudget.transactionColor = "blue";
-                    newBudget.categoryType = "Income";
-                }
-                
-                TransactionDatabase db = new TransactionDatabase();
-                Console.WriteLine(newBudget);
-                if (db.AddNewTransaction(newBudget))
-                {
-                    await DisplayAlert("Successful", "Add new transaction successfully", "OK");
-
-                    Application.Current.MainPage = new AppShell();
-                }
-                else
-                {
-                    DisplayAlert("Fail", "Add new transaction failed", "OK");
+                    DisplayAlert("Fail", "Please type full information", "OK");
                 }
             }
-            else
-            {
+            catch{
                 DisplayAlert("Fail", "Please type full information", "OK");
-            } 
+            }
         }
         private void CategoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

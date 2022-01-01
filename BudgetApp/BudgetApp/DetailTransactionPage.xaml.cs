@@ -80,36 +80,42 @@ namespace BudgetApp
                 // Access the file that was specified:-
                 categoryImgName = objFileImageSource.File;
             }
-
-            if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png"))
+            try
             {
-                transaction.transactionMoney = Int32.Parse(entryMoney.Text);
-
-
-                transaction.icon = categoryImgName;
-                
-                if (categoryTypeName == "Expense")
+                if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
                 {
-                    transaction.transactionColor = "red";
+                    transaction.transactionMoney = Int32.Parse(entryMoney.Text);
+
+
+                    transaction.icon = categoryImgName;
+
+                    if (categoryTypeName == "Expense")
+                    {
+                        transaction.transactionColor = "red";
+                    }
+                    else
+                    {
+                        transaction.transactionColor = "blue";
+                    }
+
+                    TransactionDatabase db = new TransactionDatabase();
+                    if (db.UpdateTransaction(transaction))
+                    {
+                        await DisplayAlert("Successful", "Update transaction successfully", "OK");
+
+                        Navigation.PushAsync(new TransactionPage());
+                    }
+                    else
+                    {
+                        DisplayAlert("Fail", "Update transaction failed", "OK");
+                    }
                 }
                 else
                 {
-                    transaction.transactionColor = "blue";
-                }
-
-                TransactionDatabase db = new TransactionDatabase();
-                if (db.UpdateTransaction(transaction))
-                {
-                    await DisplayAlert("Successful", "Update transaction successfully", "OK");
-
-                    Navigation.PushAsync(new TransactionPage());
-                }
-                else
-                {
-                    DisplayAlert("Fail", "Update transaction failed", "OK");
+                    DisplayAlert("Fail", "Please type full information", "OK");
                 }
             }
-            else
+            catch
             {
                 DisplayAlert("Fail", "Please type full information", "OK");
             }

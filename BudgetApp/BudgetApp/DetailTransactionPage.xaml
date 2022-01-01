@@ -3,7 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.DetailTransactionPage"            
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             BackgroundColor="LightGray">
+             BackgroundColor="LightGray"
+             Shell.BackgroundColor="Orange">
+    <Shell.TitleView>
+        <Label Text="Detail"  FontSize="40" HorizontalTextAlignment="Center" Margin="-60,0,60,0" TextColor="Black" FontAttributes="Bold"></Label>
+    </Shell.TitleView>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior  IsEnabled="False" IconOverride="transparent.png"></BackButtonBehavior>
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <Grid>
             <Frame BackgroundColor="WhiteSmoke" HasShadow="True" Margin="0,40,0,40">

@@ -14,6 +14,8 @@ namespace BudgetApp
         public App()
         {
             InitializeComponent();
+          //  Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9");
+
             TransactionDatabase db = new TransactionDatabase();
             db.CreateDatabase();
 

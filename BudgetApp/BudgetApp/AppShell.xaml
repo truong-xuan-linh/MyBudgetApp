@@ -2,8 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:BudgetApp"
-             x:Class="BudgetApp.AppShell"
-             Shell.NavBarIsVisible="False">
+             x:Class="BudgetApp.AppShell">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -22,8 +21,9 @@
 
     </Shell.Resources>
     <TabBar x:Name="TabBar" Route="main" >
-        <Tab x:Name="Transactions"  Title="Transaction" Icon="transaction.png">
-            <ShellContent x:Name="Transaction" Route="Transaction" ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
+        <Tab x:Name="Transactions"  Title="Transaction" Icon="transaction.png" >
+            <ShellContent x:Name="Transaction" Route="Transaction"  ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
+            
         </Tab>
 
         <Tab Title="Category" Icon="categories.png">
@@ -31,12 +31,13 @@
         </Tab>
         
         <Tab Icon="plusicon.png" >
-      
+   
             <ShellContent  ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Report" Icon="report.png">
-            <ShellContent ContentTemplate="{DataTemplate views:ReportPage}"></ShellContent>
+            <ShellContent Title="Income" ContentTemplate="{DataTemplate views:IncomeReportPage}"></ShellContent>
+            <ShellContent Title="Expense" ContentTemplate="{DataTemplate views:ExpenseReportPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Account" Icon="user.png">

@@ -6,10 +6,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable ="d"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#eeeeee">
+             BackgroundColor="#eeeeee"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -28,8 +30,8 @@
                         <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="Center">
                             <Image Source="income3.png" HeightRequest="32" VerticalOptions="Center" HorizontalOptions="Center" ></Image>
                             <StackLayout Spacing="2" HorizontalOptions="Center">
-                                <Label Text="Income" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                <Label x:Name="Income"  TextColor="Blue"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                                <Label Text="Income" TextColor="#3366CC" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                <Label x:Name="Income"  TextColor="#3366CC"  FontSize="18" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                             </StackLayout>
                         </StackLayout>
 
@@ -49,9 +51,10 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
+                
             </StackLayout>
-            
-            <ListView x:Name="incomeExpenseList" BackgroundColor="WhiteSmoke" Grid.Row="2"  IsGroupingEnabled="True" SeparatorVisibility="None" Margin="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="incomeExpenseList_ItemSelected">
+            <Picker Grid.Row="2" x:Name= "yearPicker" Margin="-15" WidthRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" SelectedIndexChanged="yearPicker_SelectedIndexChanged"></Picker>
+            <ListView x:Name="incomeExpenseList" BackgroundColor="WhiteSmoke" Grid.Row="3"  IsGroupingEnabled="True" SeparatorVisibility="None" Margin="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="incomeExpenseList_ItemSelected">
                 <ListView.GroupHeaderTemplate >
                     <DataTemplate>
                         <ViewCell Height="40">
@@ -89,7 +92,7 @@
                                         <Label  Text="{Binding transactionDay}" HeightRequest="11" FontSize="9" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start"></Label>
                                     </StackLayout>
                                    
-                                    <Label Grid.Column="2" Text="{Binding transactionMoney}" FontSize="18" TextColor="{Binding transactionColor}" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                                    <Label x:Name="colorMoney" Grid.Column="2" Text="{Binding transactionMoney}" FontSize="18" TextColor="{Binding transactionColor}" VerticalOptions="Center" HorizontalOptions="End"></Label>
                                     
                                 </Grid>
                             </Frame>
