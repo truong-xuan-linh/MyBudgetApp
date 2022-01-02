@@ -24,7 +24,7 @@ namespace BudgetApp
             string user = await myAuth.SignUpWithEmailAndPassword(uName.Text, pWord.Text);
             if (user != string.Empty)
             {
-                Application.Current.MainPage = new AppShell();
+                Application.Current.MainPage = new LoginPage();
             }
             else
             {

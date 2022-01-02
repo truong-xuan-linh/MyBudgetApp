@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:BudgetApp"
-             x:Class="BudgetApp.AppShell"
-             Shell.NavBarIsVisible="False">
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:BudgetApp"
+       x:Class="BudgetApp.AppShell"
+       Shell.NavBarIsVisible="False"
+       Shell.BackgroundColor="Orange">
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">#F01110</Color>
+            <Color x:Key="ThemeColor">orange</Color>
             <Color x:Key="GrayColor">#B7ACA9</Color>
             <Color x:Key="BgColor">white</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -22,14 +23,17 @@
 
     </Shell.Resources>
 
-    <TabBar Route="main">
+    <TabBar Route="main" >
+        
         <Tab Title="Transaction" Icon="transaction.png">
             <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Category" Icon="categories.png">
-            <ShellContent ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
+        <Tab Title="Category" Icon="categories.png" Shell.ForegroundColor="Black" Shell.UnselectedColor="Black">
+            <ShellContent Shell.NavBarIsVisible="True" Title="Expenses" ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
+            <ShellContent Shell.NavBarIsVisible="True" Title="Income" ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
         </Tab>
+        
 
         <Tab Title="Report" Icon="report.png">
             <ShellContent ContentTemplate="{DataTemplate views:ReportPage}"></ShellContent>
@@ -37,6 +41,7 @@
 
         <Tab Title="Account" Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
+            
         </Tab>
     </TabBar>
 </Shell>

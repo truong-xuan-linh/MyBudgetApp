@@ -17,5 +17,10 @@ namespace BudgetApp
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
+
+        private void AddCateBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
