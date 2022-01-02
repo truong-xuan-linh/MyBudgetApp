@@ -16,7 +16,7 @@
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"></Setter>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayColor}"></Setter>
                 <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}"></Setter>
-                        
+
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"></Style>
         </ResourceDictionary>
@@ -34,9 +34,14 @@
             <ShellContent Shell.NavBarIsVisible="True" Title="Income" ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
         </Tab>
         
+        <Tab Icon="plusicon.png" >
+   
+            <ShellContent  ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
+        </Tab>
 
         <Tab Title="Report" Icon="report.png">
-            <ShellContent ContentTemplate="{DataTemplate views:ReportPage}"></ShellContent>
+            <ShellContent Title="Income" ContentTemplate="{DataTemplate views:IncomeReportPage}"></ShellContent>
+            <ShellContent Title="Expense" ContentTemplate="{DataTemplate views:ExpenseReportPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Account" Icon="user.png">
@@ -44,4 +49,6 @@
             
         </Tab>
     </TabBar>
+    
+    
 </Shell>

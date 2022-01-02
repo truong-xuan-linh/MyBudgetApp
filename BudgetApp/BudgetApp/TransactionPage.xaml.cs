@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,63 +13,69 @@ namespace BudgetApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TransactionPage : ContentPage
     {
-        List<DateBudget> dateBudget = new List<DateBudget>();
+        List<TransactionDateClass> dateTransaction = new List<TransactionDateClass>();
+        List<string> allYear = new List<string>();
+        int totalExpense;
+        int totalIncome;
+        string globalYear = DateTime.Now.Year.ToString();
+
         public TransactionPage()
         {
             InitializeComponent();
             DetailBudgetInit();
-            IncomeExpenseList.ItemsSource = dateBudget;
+            YearPickerInit();
+            TransactionDatabase db = new TransactionDatabase();
+            Income.Text = totalIncome.ToString();
+            Expense.Text = totalExpense.ToString();
+            totalMoney.Text = db.GetTotalMoney().ToString();
+            incomeExpenseList.ItemsSource = dateTransaction;
+            
+        }
+        void YearPickerInit()
+        {
+            yearPicker.Title = globalYear;
+
+            TransactionDatabase db = new TransactionDatabase();
+            List<DetailTransactionClass> allTransaction = db.GetAllTransaction();
+            foreach (DetailTransactionClass transaction in allTransaction)
+            {
+                DateTime day = DateTime.ParseExact(transaction.transactionDay, "d/M/yyyy", CultureInfo.InvariantCulture);
+                int pos = allYear.IndexOf(day.Year.ToString());
+                if (pos == -1)
+                {
+                    allYear.Add(day.Year.ToString());
+                }
+            }
+            allYear.Sort();
+            allYear.Reverse();
+            yearPicker.ItemsSource = allYear;
         }
         void DetailBudgetInit()
         {
-            DateBudget Thang1 = new DateBudget("1/2021") { Income = 1000000, Expense = -50000 };
-            Thang1.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay="1/1/2021"});
-            Thang1.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay="5/1/2021" });
-            Thang1.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay="16/1/2021" });
-            dateBudget.Add(Thang1);
+            TransactionDatabase db = new TransactionDatabase();
+            string year = DateTime.Now.Year.ToString();
+            (dateTransaction,totalIncome,totalExpense) = db.GetTransactionByMonth(globalYear);
+        }
 
-            DateBudget Thang2 = new DateBudget("2/2021") { Income = 1000000, Expense = -50000 };
-            Thang2.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang2.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang2.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang2);
+        private void incomeExpenseList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            DetailTransactionClass selectedBudget = (DetailTransactionClass)incomeExpenseList.SelectedItem;
+            Navigation.PushAsync(new DetailTransactionPage(selectedBudget));
+        }
 
-            DateBudget Thang3 = new DateBudget("3/2021") { Income = 1000000, Expense = -50000 };
-            Thang3.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang3.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang3.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang3);
-
-            DateBudget Thang4 = new DateBudget("4/2021") { Income = 1000000, Expense = -50000 };
-            Thang4.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang4.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang4.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang4);
-
-            DateBudget Thang5 = new DateBudget("5/2021") { Income = 1000000, Expense = -50000 };
-            Thang5.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang5.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang5.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang5);
-
-            DateBudget Thang6 = new DateBudget("6/2021") { Income = 1000000, Expense = -50000 };
-            Thang6.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang6.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang6.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang6);
-
-            DateBudget Thang7 = new DateBudget("7/2021") { Income = 1000000, Expense = -50000 };
-            Thang7.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang7.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang7.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang7);
-
-            DateBudget Thang8 = new DateBudget("8/2021") { Income = 1000000, Expense = -50000 };
-            Thang8.Add(new DetailBudget("Salary") { CategoryColor = "Blue", Icon = "salaryicon.png", CategoryMoney = 100000, CategoryDay = "1/1/2021" });
-            Thang8.Add(new DetailBudget("Shopping") { CategoryColor = "Red", Icon = "shoppingicon.png", CategoryMoney = -10000, CategoryDay = "1/1/2021" });
-            Thang8.Add(new DetailBudget("Food") { CategoryColor = "Red", Icon = "foodicon.png", CategoryMoney = -50000, CategoryDay = "1/1/2021" });
-            dateBudget.Add(Thang8);
-
+        private void yearPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var yearChoose = (Picker)sender;
+            int lineChoose = yearChoose.SelectedIndex;
+            if (lineChoose >= 0)
+            {
+                yearPicker.Title = (string)yearChoose.SelectedItem;
+            }
+            this.globalYear = yearPicker.Title;
+            DetailBudgetInit();
+            Income.Text = totalIncome.ToString();
+            Expense.Text = totalExpense.ToString();
+            incomeExpenseList.ItemsSource = dateTransaction;
         }
     }
 

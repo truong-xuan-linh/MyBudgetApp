@@ -5,12 +5,20 @@ using BudgetApp;
 
 namespace BudgetApp
 {
+    
     public partial class App : Application
     {
         MyFirebaseAuthentication myAuth;
+        
+
         public App()
         {
             InitializeComponent();
+          //  Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9");
+
+            TransactionDatabase db = new TransactionDatabase();
+            db.CreateDatabase();
+
             myAuth = DependencyService.Get<MyFirebaseAuthentication>();
             if (myAuth.IsSignIn())
             {
@@ -20,6 +28,7 @@ namespace BudgetApp
             {
                 MainPage = new LoginPage();
             }
+            
         }
 
         protected override void OnStart()
