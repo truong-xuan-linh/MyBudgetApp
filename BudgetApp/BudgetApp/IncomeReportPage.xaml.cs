@@ -22,12 +22,29 @@ namespace BudgetApp
         public IncomeReportPage()
         {
             InitializeComponent();
-            DrawColumnChart(globalYear);
-            YearPickerInit();
-            MonthPickerInit(globalYear);
-            DonutMonthChart();
-        }
+            if (checkEmpty())
+            {
 
+                Navigation.PushAsync(new EmptyPage());
+            }
+            else
+            {
+                DrawColumnChart(globalYear);
+                YearPickerInit();
+                MonthPickerInit(globalYear);
+                DonutMonthChart();
+            }  
+        }
+        bool checkEmpty()
+        {
+            TransactionDatabase db = new TransactionDatabase();
+            List<DetailTransactionClass> dateTransaction = db.GetAllTransaction();
+            if (dateTransaction.Count == 0)
+            {
+                return true;
+            }
+            return false;
+        }
         void DrawColumnChart(string year)
         {
             List<ChartEntry> yearList = new List<ChartEntry>();

@@ -11,16 +11,16 @@ namespace BudgetApp
         List<string> allYear = new List<string>();
         string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
         string year = DateTime.Now.Year.ToString();
+        string datafolder = "Test1.db";
         public bool CreateDatabase()
         {
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
 
-                //tao bang
-                //connection.CreateTable<DateBudget>();
                 connection.CreateTable<DetailTransactionClass>();
+                connection.CreateTable<CategoryClass>();
 
 
                 return true;
@@ -33,14 +33,88 @@ namespace BudgetApp
 
             
         }
+        public bool AddNewCategory(CategoryClass category)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                connection.Insert(category);
+                return true;
+            }
+            catch 
+            {
+                return false;
 
+            }
+        }    
+        public List<CategoryClass> GetCategoryClasses(string type)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+
+                return connection.Query<CategoryClass>("select * from CategoryClass where categoryType= '" + type + "'");
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<CategoryClass> GetAllCategoryClasses()
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+
+                return connection.Table<CategoryClass>().ToList();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool UpdateCategory(CategoryClass category)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                connection.Update(category);
+                return true;
+            }
+            catch
+            {
+                return false;
+
+            }
+        }
+        public bool DeleteCategory(CategoryClass category)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                connection.Delete(category);
+                return true;
+            }
+            catch
+            {
+                return false;
+
+            }
+        }
         public bool AddNewTransaction(DetailTransactionClass Budget)
         {
 
             try { 
 
 
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 connection.Insert(Budget);
                 return true;
@@ -56,7 +130,7 @@ namespace BudgetApp
         {
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 
                 return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay like '%" + year+"'");
@@ -71,7 +145,7 @@ namespace BudgetApp
         {
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 string year = DateTime.Now.Year.ToString();
                 return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay is not null");
@@ -88,7 +162,7 @@ namespace BudgetApp
             int totalMoney = 0;
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 List<DetailTransactionClass> allTransaction =  connection.Table<DetailTransactionClass>().ToList();
                 foreach(DetailTransactionClass transaction in allTransaction)
@@ -112,7 +186,7 @@ namespace BudgetApp
         public List<TotalTransactionMonthClass> GetTotalMoneyByMonth(string month, string year, bool income)
         {
             List<TotalTransactionMonthClass> totalTransactionMonth =new List<TotalTransactionMonthClass>();
-            string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+            string path = System.IO.Path.Combine(folder, datafolder);
             var connection = new SQLiteConnection(path);
             List<DetailTransactionClass> monthTransaction;
             monthTransaction =  connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay like '%" + month+"/"+ year + "'");
@@ -218,7 +292,7 @@ namespace BudgetApp
         {
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 connection.Update(transaction);
                 return true;
@@ -233,7 +307,7 @@ namespace BudgetApp
         {
             try
             {
-                string path = System.IO.Path.Combine(folder, "TransactionDatabase.db");
+                string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 connection.Delete(transaction);
                 return true;

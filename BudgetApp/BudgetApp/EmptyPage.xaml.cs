@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace BudgetApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CategoryPage : ContentPage
+    public partial class EmptyPage : ContentPage
     {
-        public CategoryPage()
+        public EmptyPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-        }
-
-        private void AddCateBtn_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

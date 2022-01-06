@@ -16,6 +16,7 @@ namespace BudgetApp
     {
         string categoryTypeName;
         string categoryImgName;
+        TransactionDatabase db = new TransactionDatabase();
         List<CategoryTypeClass> categoryListItem = new List<CategoryTypeClass>();
         public AddTransactionPage()
         {
@@ -26,22 +27,14 @@ namespace BudgetApp
         void CategoryListInit()
         {
             CategoryTypeClass Income = new CategoryTypeClass("Income");
-            Income.Add(new CategoryClass(){categoryType="Income", categoryName = "Salary", categoryImg="salaryicon.png"});
-            Income.Add(new CategoryClass() { categoryType = "Income", categoryName = "Salary", categoryImg = "salaryicon.png" });
-            Income.Add(new CategoryClass() { categoryType = "Income", categoryName = "Salary", categoryImg = "salaryicon.png" });
-            Income.Add(new CategoryClass() { categoryType = "Income", categoryName = "Salary", categoryImg = "salaryicon.png" });
-            Income.Add(new CategoryClass() { categoryType = "Income", categoryName = "Salary", categoryImg = "salaryicon.png" });
+            foreach (var a in db.GetCategoryClasses("Income"))
+                Income.Add(a);
+            
             categoryListItem.Add(Income);
 
             CategoryTypeClass Expense = new CategoryTypeClass("Expense");
-            Expense.Add(new CategoryClass(){categoryType="Expense", categoryName = "Food", categoryImg="foodicon.png"});
-            Expense.Add(new CategoryClass(){categoryType="Expense", categoryName = "Shopping", categoryImg="shoppingicon.png"});
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Food", categoryImg = "foodicon.png" });
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Shopping", categoryImg = "shoppingicon.png" });
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Food", categoryImg = "foodicon.png" });
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Shopping", categoryImg = "shoppingicon.png" });
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Food", categoryImg = "foodicon.png" });
-            Expense.Add(new CategoryClass() { categoryType = "Expense", categoryName = "Shopping", categoryImg = "shoppingicon.png" });
+            foreach (var a in db.GetCategoryClasses("Expense"))
+                Expense.Add(a);
             categoryListItem.Add(Expense);
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -146,6 +139,15 @@ namespace BudgetApp
         private void CategoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             CategoryClass budgetSelected = (CategoryClass)categoryList.SelectedItem;
+
+            Action<double> callback = input => MyDraggableView.HeightRequest = input;
+            double startHeight = 300;
+            double endiendHeight = 0;
+            uint rate = 32;
+            uint length = 500;
+            Easing easing = Easing.SinOut;
+            MyDraggableView.Animate("anim", callback, startHeight, endiendHeight, rate, length, easing);
+
             chooseCategory.Text = budgetSelected.categoryName;
             categoryIcon.Source = budgetSelected.categoryImg;
             categoryTypeName = budgetSelected.categoryType;

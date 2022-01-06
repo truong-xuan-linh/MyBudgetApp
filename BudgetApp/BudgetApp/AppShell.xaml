@@ -23,20 +23,20 @@
 
     </Shell.Resources>
 
-    <TabBar Route="main" >
+    <TabBar Route="main" x:Name="main">
         
         <Tab Title="Transaction" Icon="transaction.png">
             <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Category" Icon="categories.png" Shell.ForegroundColor="Black" Shell.UnselectedColor="Black">
-            <ShellContent Shell.NavBarIsVisible="True" Title="Expenses" ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
-            <ShellContent Shell.NavBarIsVisible="True" Title="Income" ContentTemplate="{DataTemplate views:CategoryPage}"></ShellContent>
+        <Tab Title="Category" Icon="categories.png" Shell.ForegroundColor="Black" 
+             Shell.UnselectedColor="Black" Route="Category">
+            <ShellContent x:Name="ExpenseItem" Shell.NavBarIsVisible="True" Title="Expenses" Route="Expenses" ContentTemplate="{DataTemplate views:ExpenseCategoryPage}"></ShellContent>
+            <ShellContent x:Name="IncomeItem" Shell.NavBarIsVisible="True" Title="Income" Route="Income" ContentTemplate="{DataTemplate views:IncomeCategoryPage}"></ShellContent>
         </Tab>
-        
+
         <Tab Icon="plusicon.png" >
-   
-            <ShellContent  ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
+            <ShellContent Shell.NavBarIsVisible="True" ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Report" Icon="report.png">

@@ -14,5 +14,18 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <!--<item name="colorAccent">#FF4081</item>-->
+  <item name="android:datePickerDialogTheme">@style/CustomDatePickerDialog</item>
+ </style>
+    
+ <style name="CustomDatePickerDialog" parent="ThemeOverlay.AppCompat.Dialog">
+  <!--header background-->
+  <item name="colorAccent">#FFA500</item>
+  <!--selected day-->
+  <item name="android:colorControlActivated">#FFA500</item>
+  <!--days of the month-->
+  <item name="android:textColorPrimary">#000000</item>
+  <!--days of the week-->
+  <item name="android:textColorSecondary">#000000</item>
+
   </style>
 </resources>

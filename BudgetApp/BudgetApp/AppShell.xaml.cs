@@ -16,10 +16,23 @@ namespace BudgetApp
         public AppShell()
         {
             InitializeComponent();
-
             Routing.RegisterRoute(nameof(AppShell), typeof(AppShell));
             NavigationPage.SetHasNavigationBar(this, false);
+            
         }
-       
+        public AppShell(string CateType)
+        {
+            InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            if (CateType == "Income")
+            {
+                main.CurrentItem = IncomeItem;
+            }    
+            else
+            {
+                main.CurrentItem = ExpenseItem;
+            }    
+
+        }
     }
 }

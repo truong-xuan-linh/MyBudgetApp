@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetApp.EditCategoryPage">
+    <ContentPage.Content>
+        <Grid>
+            <Frame>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Edit Category" FontSize="Large"
+                           TextColor="Black" HorizontalOptions="Center"
+                           FontAttributes="Bold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+
+                        </Grid.RowDefinitions>
+                        <ImageButton x:Name="CateIcon"
+                                     BackgroundColor="White" Clicked="CateIcon_Clicked"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"
+                                     Grid.Column="0" Grid.Row="1"/>
+                        <Entry x:Name="CateEntry"
+                               FontSize="Large"
+                               Grid.Column="1" Grid.Row="1"/>
+
+                        <Label Text="Type: " Grid.Column="0" Grid.Row="2" FontSize="Large" 
+                               TextColor="Black" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label x:Name="Typelbl" Grid.Column="1" Grid.Row="2"
+                               FontSize="Large" TextColor="Gray" 
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                        <ImageButton x:Name="EditCateBtn" Source="checkedicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     Clicked="EditCateBtn_Clicked"/>
+                        <ImageButton x:Name="DeleteCateBtn" Source="binicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     Clicked="DeleteCateBtn_Clicked"/>
+                        <ImageButton x:Name="CancelCateBtn" Source="cancelicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     Clicked="CancelCateBtn_Clicked"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

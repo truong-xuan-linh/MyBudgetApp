@@ -7,10 +7,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              BackgroundColor="LightGray"
-             Shell.NavBarIsVisible="False">
+             
+             Title="Add new transaction">
     <ContentPage.Content>
         <Grid>
-            <Frame BackgroundColor="WhiteSmoke" HasShadow="True" Margin="0,40,0,40">
+            <Frame BackgroundColor="WhiteSmoke" HasShadow="True">
                 <StackLayout>
 
                     <Grid>
@@ -24,23 +25,37 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Image Grid.Column="0" Grid.Row="0" Source="moneyicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="0" Placeholder='0' PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric" TextColor="DarkOrange"></Entry>
+                        <Image Grid.Column="0" Grid.Row="0" Source="moneyicon.png" HeightRequest="50" 
+                               HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="0" Placeholder='0' 
+                               PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric"
+                               TextColor="DarkOrange"></Entry>
 
-                        <Image Grid.Column="0" Grid.Row="1" Source="scheduleicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <DatePicker x:Name="datePicker" Format="d/M/yyy" Grid.Column="1" Grid.Row="1" FontSize="40" TextColor="Black"></DatePicker>
+                        <Image Grid.Column="0" Grid.Row="1" Source="scheduleicon.png" HeightRequest="50"
+                               HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <DatePicker x:Name="datePicker" Format="d/M/yyy" Grid.Column="1" Grid.Row="1" 
+                                    
+                                    FontSize="40" TextColor="Black"></DatePicker>
 
-                        <Image x:Name="categoryIcon" Grid.Column="0" Grid.Row="2" Source="questionicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <Button x:Name="chooseCategory" Grid.Column="1" Grid.Row="2" Text="Choose category" FontSize="25" BackgroundColor="WhiteSmoke"  TextColor="Gray" Clicked="Category_Clicked" ></Button>
+                        <Image x:Name="categoryIcon" Grid.Column="0" Grid.Row="2" 
+                               Source="questionicon.png" HeightRequest="50" 
+                               HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <Button x:Name="chooseCategory" Grid.Column="1" Grid.Row="2" 
+                                Text="Choose category" FontSize="25" BackgroundColor="WhiteSmoke" 
+                                TextColor="Gray" Clicked="Category_Clicked" ></Button>
 
 
                     </Grid>
-                    <ImageButton x:Name="ckecked" Source="checkedicon.png"  HeightRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="WhiteSmoke" Clicked="Ckecked_Clicked"></ImageButton>
+                    <ImageButton x:Name="ckecked" Source="checkedicon.png"  HeightRequest="70" 
+                                 VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                                 BackgroundColor="WhiteSmoke" Clicked="Ckecked_Clicked"></ImageButton>
                     
                 </StackLayout>
                 
             </Frame>
-            <yummy:PancakeView BackgroundColor="White"  VerticalOptions="EndAndExpand"  x:Name="MyDraggableView" CornerRadius="60,60,0,0" HorizontalOptions="FillAndExpand" HeightRequest="0">
+            <yummy:PancakeView BackgroundColor="White"  VerticalOptions="EndAndExpand"  
+                               x:Name="MyDraggableView" CornerRadius="60,60,0,0"
+                               HorizontalOptions="FillAndExpand" HeightRequest="0">
                 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -50,17 +65,24 @@
                         </Grid.RowDefinitions>
                         
                         <Grid Grid.Row="0">
-                            <BoxView HeightRequest="2"  Margin="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="Gray" WidthRequest="90"/>
+                            <BoxView HeightRequest="2"  Margin="10" VerticalOptions="CenterAndExpand" 
+                                     HorizontalOptions="CenterAndExpand" BackgroundColor="Gray" 
+                                     WidthRequest="90"/>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                             </Grid.GestureRecognizers>
                         </Grid>
-                        <ListView x:Name="categoryList" BackgroundColor="White" Grid.Row="1"  IsGroupingEnabled="True" GroupDisplayBinding="{Binding categoryType}" SeparatorVisibility="None" Margin="10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="CategoryList_ItemSelected">
+                        <ListView x:Name="categoryList" BackgroundColor="White" Grid.Row="1"  
+                                  IsGroupingEnabled="True" GroupDisplayBinding="{Binding categoryType}"
+                                  SeparatorVisibility="None" Margin="10,0" 
+                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                  ItemSelected="CategoryList_ItemSelected">
                             <ListView.GroupHeaderTemplate >
                                 <DataTemplate>
                                     <ViewCell Height="40">
                                         
-                                        <Label x:Name="categoryTypeName" Text="{Binding categoryType}" FontSize="15" Margin="10,0,0,0" VerticalOptions="Center"></Label>
+                                        <Label x:Name="categoryTypeName" Text="{Binding categoryType}" 
+                                               FontSize="15" Margin="10,0,0,0" VerticalOptions="Center"></Label>
                                             
                   
                                     </ViewCell>
@@ -76,8 +98,10 @@
                                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="{Binding categoryImg}" Grid.Column="0"  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Start"></Image>
-                                            <Label Grid.Column="1" Text="{Binding categoryName}" FontSize="18" HeightRequest="22" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                            <Image Source="{Binding categoryImg}" Grid.Column="0"  HeightRequest="25" 
+                                                   VerticalOptions="Center" HorizontalOptions="Start"></Image>
+                                            <Label Grid.Column="1" Text="{Binding categoryName}" FontSize="18" HeightRequest="22" 
+                                                   TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"></Label>
                                         </Grid>
                                     
                                     </ViewCell>
