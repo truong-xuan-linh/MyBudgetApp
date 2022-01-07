@@ -3,31 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.LoginPage"
              BackgroundColor="#fffee6">
+    
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center" >
-            <Image Source="applogo.jpg" WidthRequest="180" HeightRequest="180"/>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <Image Source="applogo.jpg" WidthRequest="130" HeightRequest="130"/>
+            <Label Text="Sign In" TextColor="#ff3847" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold"/>
+           
+            <Entry Keyboard="Text" Placeholder="Email"
+                   ClearButtonVisibility="WhileEditing"
+                   VerticalOptions="Center" x:Name="uName"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-
-                <Label Text="Email: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
-                       VerticalOptions="Center"></Label>
-                <Entry Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="uName"/>
-
-                <Label Text="Pass word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
-                       VerticalOptions="Center"></Label>
-                <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
-                       x:Name="pWord"/>
-
-                <Button Text="Sign in" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                
+            <Entry IsPassword="true" Placeholder="Password"
+                   VerticalOptions="Center"
+                   x:Name="pWord"/>
+            
+            <Label HorizontalOptions="End" FontSize="Medium">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Forgot Password?" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ForgotTap" Tapped="ForgotTap_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            
+            <Button Text="Sign in" 
                         x:Name="loginBtn" 
                         TextColor="#ff3847"
                         BorderColor="#75c7fb"
@@ -36,19 +38,19 @@
                         BackgroundColor="#fffee6"
                         Clicked="loginBtn_Clicked"/>
 
-                <Label HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Don't have an account? " TextColor="#75c7fb"/>
-                            <Span Text="Sign Up" TextColor="#ff3847" FontAttributes="Bold" TextDecorations="Underline"/>
-                        </FormattedString>
+            <Label HorizontalOptions="Center" FontSize="Medium">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account? " TextColor="#75c7fb"/>
+                        <Span Text="Sign Up" TextColor="#ff3847" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
                     </Label.FormattedText>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </Label.GestureRecognizers>
-                </Label>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="SignUpTap" Tapped="SignUpTap_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
 
-            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

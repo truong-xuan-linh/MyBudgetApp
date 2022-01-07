@@ -29,7 +29,6 @@ namespace BudgetApp
             Expense.Text = totalExpense.ToString();
             totalMoney.Text = db.GetTotalMoney().ToString();
             incomeExpenseList.ItemsSource = dateTransaction;
-            
         }
         void YearPickerInit()
         {

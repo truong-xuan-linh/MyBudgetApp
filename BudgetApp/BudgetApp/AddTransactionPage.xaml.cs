@@ -18,6 +18,7 @@ namespace BudgetApp
         string categoryImgName;
         TransactionDatabase db = new TransactionDatabase();
         List<CategoryTypeClass> categoryListItem = new List<CategoryTypeClass>();
+        DetailTransactionClass newBudget = new DetailTransactionClass();
         public AddTransactionPage()
         {
             InitializeComponent();
@@ -80,10 +81,9 @@ namespace BudgetApp
         private async void Ckecked_Clicked(object sender, EventArgs e)
         {
             
-            string transactionName = chooseCategory.Text;
+            newBudget.transactionName = chooseCategory.Text;
 
-            DetailTransactionClass newBudget = new DetailTransactionClass();
-            newBudget.transactionName = transactionName;
+            
             newBudget.transactionDay = datePicker.Date.ToString("d/M/yyyy", CultureInfo.InvariantCulture);
 
             if (categoryIcon.Source is Xamarin.Forms.FileImageSource)
@@ -98,7 +98,6 @@ namespace BudgetApp
                 if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
                 {
                     newBudget.transactionMoney = Int32.Parse(entryMoney.Text);
-
 
                     newBudget.icon = categoryImgName;
 
@@ -148,6 +147,7 @@ namespace BudgetApp
             Easing easing = Easing.SinOut;
             MyDraggableView.Animate("anim", callback, startHeight, endiendHeight, rate, length, easing);
 
+            newBudget.cateID = budgetSelected.cateID.ToString();
             chooseCategory.Text = budgetSelected.categoryName;
             categoryIcon.Source = budgetSelected.categoryImg;
             categoryTypeName = budgetSelected.categoryType;

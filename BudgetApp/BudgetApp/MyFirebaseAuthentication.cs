@@ -14,5 +14,7 @@ namespace BudgetApp
         bool IsSignIn();
         string GetUid();
         string GetUname();
+
+        bool ResetPassword(string email);
     }
 }

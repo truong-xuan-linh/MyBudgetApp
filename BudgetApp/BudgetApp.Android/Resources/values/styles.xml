@@ -19,9 +19,9 @@
     
  <style name="CustomDatePickerDialog" parent="ThemeOverlay.AppCompat.Dialog">
   <!--header background-->
-  <item name="colorAccent">#FFA500</item>
+  <item name="colorAccent">#2193b0</item>
   <!--selected day-->
-  <item name="android:colorControlActivated">#FFA500</item>
+  <item name="android:colorControlActivated">#2193b0</item>
   <!--days of the month-->
   <item name="android:textColorPrimary">#000000</item>
   <!--days of the week-->

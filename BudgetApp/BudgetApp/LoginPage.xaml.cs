@@ -33,11 +33,16 @@ namespace BudgetApp
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
+        
 
+        private void SignUpTap_Tapped(object sender, EventArgs e)
+        {
             Application.Current.MainPage = new SignupPage();
-      
+        }
+
+        private void ForgotTap_Tapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new ResetPasswordPage();
         }
     }
 }

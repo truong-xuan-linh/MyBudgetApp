@@ -4,30 +4,18 @@
              x:Class="BudgetApp.SignupPage"
              BackgroundColor="#fffee6">
     <StackLayout Padding="40" VerticalOptions="Center" >
-        <Label Text="SIGN UP" TextColor="#ff3847" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold"/>
+        <Image Source="applogo.jpg" WidthRequest="130" HeightRequest="130"/>
+        <Label Text="Sign Up" TextColor="#ff3847" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold"/>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <Entry Keyboard="Text" Placeholder="User Name"
+               ClearButtonVisibility="WhileEditing"
+               VerticalOptions="Center" x:Name="uName"/>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="2*" />
-            </Grid.ColumnDefinitions>
-
-            <Label Text="Email: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#75c7fb"
-                   VerticalOptions="Center"></Label>
-            <Entry Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="uName"/>
-
-            <Label Text="Pass word: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="#ff3847"
-                   VerticalOptions="Center"></Label>
-            <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+        <Entry IsPassword="true" Placeholder="Password"
+                   VerticalOptions="Center"
                    x:Name="pWord"/>
-
-            <Button Text="Sign up" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+        
+        <Button Text="Sign up" Grid.ColumnSpan="2"
                     x:Name="SignUpBtn" 
                     TextColor="#ff3847"
                     BorderColor="#75c7fb"
@@ -35,17 +23,17 @@
                     CornerRadius="50"
                     BackgroundColor="#fffee6"
                     Clicked="SignUpBtn_Clicked"/>
-            
-            <Label HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Sign In" TextColor="#ff3847" FontAttributes="Bold"/>
-                    </FormattedString>
-                </Label.FormattedText>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
+
+        <Label HorizontalOptions="Center" FontSize="Medium">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Already have an account? " TextColor="#75c7fb"/>
+                    <Span Text="Sign In" TextColor="#ff3847" FontAttributes="Bold"/>
+                </FormattedString>
+            </Label.FormattedText>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
     </StackLayout>
 </ContentPage>

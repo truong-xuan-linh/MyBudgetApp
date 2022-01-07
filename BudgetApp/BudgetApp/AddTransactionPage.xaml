@@ -28,8 +28,8 @@
                         <Image Grid.Column="0" Grid.Row="0" Source="moneyicon.png" HeightRequest="50" 
                                HorizontalOptions="Start" VerticalOptions="End"></Image>
                         <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="0" Placeholder='0' 
-                               PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric"
-                               TextColor="DarkOrange"></Entry>
+                               PlaceholderColor="#2193b0" FontSize="40" Keyboard="Numeric"
+                               TextColor="#2193b0"></Entry>
 
                         <Image Grid.Column="0" Grid.Row="1" Source="scheduleicon.png" HeightRequest="50"
                                HorizontalOptions="Start" VerticalOptions="End"></Image>

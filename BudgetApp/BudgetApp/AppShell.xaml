@@ -4,11 +4,11 @@
        xmlns:views="clr-namespace:BudgetApp"
        x:Class="BudgetApp.AppShell"
        Shell.NavBarIsVisible="False"
-       Shell.BackgroundColor="Orange">
+       Shell.BackgroundColor="#2193b0">
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">orange</Color>
+            <Color x:Key="ThemeColor">#2193b0</Color>
             <Color x:Key="GrayColor">#B7ACA9</Color>
             <Color x:Key="BgColor">white</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -31,7 +31,7 @@
 
         <Tab Title="Category" Icon="categories.png" Shell.ForegroundColor="Black" 
              Shell.UnselectedColor="Black" Route="Category">
-            <ShellContent x:Name="ExpenseItem" Shell.NavBarIsVisible="True" Title="Expenses" Route="Expenses" ContentTemplate="{DataTemplate views:ExpenseCategoryPage}"></ShellContent>
+            <ShellContent x:Name="ExpenseItem" Shell.NavBarIsVisible="True" Title="Expense" Route="Expenses" ContentTemplate="{DataTemplate views:ExpenseCategoryPage}"></ShellContent>
             <ShellContent x:Name="IncomeItem" Shell.NavBarIsVisible="True" Title="Income" Route="Income" ContentTemplate="{DataTemplate views:IncomeCategoryPage}"></ShellContent>
         </Tab>
 

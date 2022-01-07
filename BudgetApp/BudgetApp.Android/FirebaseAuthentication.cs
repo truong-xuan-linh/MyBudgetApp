@@ -68,7 +68,19 @@ namespace BudgetApp.Droid
                 return false;
             }
         }
-
+        
+        public bool ResetPassword(string email)
+        {
+            try
+            {
+                FirebaseAuth.Instance.SendPasswordResetEmail(email);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         public async Task<string> SignUpWithEmailAndPassword(string email, string password)
         {
             try
@@ -88,5 +100,7 @@ namespace BudgetApp.Droid
                 return string.Empty;
             }
         }
+
+        
     }
 }
