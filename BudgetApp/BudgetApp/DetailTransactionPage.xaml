@@ -4,37 +4,36 @@
              x:Class="BudgetApp.DetailTransactionPage"            
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              BackgroundColor="LightGray"
-             Shell.BackgroundColor="Orange">
-    <Shell.TitleView>
-        <Label Text="Detail"  FontSize="40" HorizontalTextAlignment="Center" Margin="-60,0,60,0" TextColor="Black" FontAttributes="Bold"></Label>
-    </Shell.TitleView>
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior  IsEnabled="False" IconOverride="transparent.png"></BackButtonBehavior>
-    </Shell.BackButtonBehavior>
+             >
+    
     <ContentPage.Content>
         <Grid>
-            <Frame BackgroundColor="WhiteSmoke" HasShadow="True" Margin="0,40,0,40">
+            <Frame BackgroundColor="WhiteSmoke" HasShadow="True">
                 <StackLayout>
-
+                    <Label Text="Edit Transaction" FontSize="Large"
+                           TextColor="#2193b0" HorizontalOptions="Center"
+                           FontAttributes="Bold"/>
+                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Image Grid.Column="0" Grid.Row="0" Source="moneyicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="0" Placeholder='0' PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric" TextColor="DarkOrange"></Entry>
+                        <Image Grid.Column="0" Grid.Row="1" Source="moneyicon.png" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="1" Placeholder='0' PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric" TextColor="DarkOrange"></Entry>
 
-                        <Image Grid.Column="0" Grid.Row="1" Source="scheduleicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <DatePicker x:Name="datePicker" Format="dd/MM/yyyy" Grid.Column="1" Grid.Row="1" FontSize="40" TextColor="Black"></DatePicker>
+                        <Image Grid.Column="0" Grid.Row="2" Source="scheduleicon.png" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <DatePicker x:Name="datePicker" Format="dd/MM/yyyy" Grid.Column="1" Grid.Row="2" FontSize="40" TextColor="Black"></DatePicker>
 
-                        <Image x:Name="categoryIcon" Grid.Column="0" Grid.Row="2" Source="questionicon.png" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <Button x:Name="chooseCategory" Grid.Column="1" Grid.Row="2" Text="Choose Category" FontSize="25" BackgroundColor="WhiteSmoke"  TextColor="Gray" Clicked="Category_Clicked" ></Button>
+                        <Image x:Name="categoryIcon" Grid.Column="0" Grid.Row="3" Source="questionicon.png" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                        <Button x:Name="chooseCategory" Grid.Column="1" Grid.Row="3" Text="Choose Category" FontSize="25" BackgroundColor="WhiteSmoke"  TextColor="Gray" Clicked="Category_Clicked" ></Button>
 
 
                     </Grid>

@@ -7,7 +7,7 @@
             <Frame>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Edit Category" FontSize="Large"
-                           TextColor="Black" HorizontalOptions="Center"
+                           TextColor="#2193b0" HorizontalOptions="Center"
                            FontAttributes="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -38,21 +38,22 @@
                                VerticalOptions="Center" HorizontalOptions="Start"/>
                     </Grid>
                     <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
-                        <ImageButton x:Name="EditCateBtn" Source="checkedicon.png" 
-                                     BackgroundColor="White"
-                                     HeightRequest="70"
-                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
-                                     Clicked="EditCateBtn_Clicked"/>
-                        <ImageButton x:Name="DeleteCateBtn" Source="binicon.png" 
-                                     BackgroundColor="White"
-                                     HeightRequest="70"
-                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
-                                     Clicked="DeleteCateBtn_Clicked"/>
                         <ImageButton x:Name="CancelCateBtn" Source="cancelicon.png" 
                                      BackgroundColor="White"
                                      HeightRequest="70"
                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                      Clicked="CancelCateBtn_Clicked"/>
+                        <ImageButton x:Name="DeleteCateBtn" Source="binicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     Clicked="DeleteCateBtn_Clicked"/>
+                        
+                        <ImageButton x:Name="EditCateBtn" Source="checkedicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     Clicked="EditCateBtn_Clicked"/>
                     </StackLayout>
 
                 </StackLayout>
