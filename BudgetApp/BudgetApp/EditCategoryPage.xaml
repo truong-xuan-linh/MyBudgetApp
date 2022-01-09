@@ -7,7 +7,7 @@
             <Frame>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Edit Category" FontSize="Large"
-                           TextColor="Black" HorizontalOptions="Center"
+                           TextColor="#2193b0" HorizontalOptions="Center"
                            FontAttributes="Bold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>

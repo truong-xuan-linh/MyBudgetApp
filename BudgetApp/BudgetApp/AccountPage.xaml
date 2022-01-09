@@ -4,9 +4,11 @@
              x:Class="BudgetApp.AccountPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="40">
-            <Image Source="accountlogo.png" WidthRequest="120" HeightRequest="120"/>
-            <Label x:Name="EmailLabel" HorizontalOptions="Center" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+        <StackLayout>
+            <StackLayout Padding="40">
+                <Image Source="accountlogo.png" WidthRequest="100" HeightRequest="100"/>
+                <Label x:Name="EmailLabel" HorizontalOptions="Center" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+            </StackLayout>
             
             <Button Text="Select Currency" x:Name="CurrencyBtn" 
                     TextColor="#ff3847"

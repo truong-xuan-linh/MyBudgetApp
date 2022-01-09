@@ -124,6 +124,21 @@ namespace BudgetApp
             } 
 
         }
+        public List<DetailTransactionClass> GetTransactionByCateID(string ID)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+
+                return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where cateID = " + ID);
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public List<DetailTransactionClass> GetAllTransactioByYear(string year)
         {
             try

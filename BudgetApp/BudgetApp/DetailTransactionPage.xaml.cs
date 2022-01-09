@@ -53,7 +53,6 @@ namespace BudgetApp
             categoryTypeName = transaction.categoryType;
             this.transaction = transaction;
 
-            
         }
 
         
@@ -78,8 +77,7 @@ namespace BudgetApp
                 if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
                 {
                     transaction.transactionMoney = Int32.Parse(entryMoney.Text);
-
-
+                    transaction.categoryType = categoryTypeName;
                     transaction.icon = categoryImgName;
 
                     if (categoryTypeName == "Expense")
@@ -182,6 +180,7 @@ namespace BudgetApp
         private void categoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             CategoryClass budgetSelected = (CategoryClass)categoryListt.SelectedItem;
+            
             chooseCategory.Text = budgetSelected.categoryName;
             categoryIcon.Source = budgetSelected.categoryImg;
             categoryTypeName = budgetSelected.categoryType;

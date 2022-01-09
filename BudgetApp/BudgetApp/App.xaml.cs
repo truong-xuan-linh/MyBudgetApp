@@ -41,7 +41,6 @@ namespace BudgetApp
 
                 MainPage = new LoginPage();
             }
-            //MainPage = new NavigationPage(new SelectCateIconPage());
         }
 
         protected override void OnStart()

@@ -41,6 +41,13 @@ namespace BudgetApp
                 TransactionDatabase db = new TransactionDatabase();
                 if (db.UpdateCategory(category))
                 {
+                    List<DetailTransactionClass> updateTransactionLst = db.GetTransactionByCateID(category.cateID.ToString());
+                    foreach (var a in updateTransactionLst)
+                    {
+                        a.transactionName = category.categoryName;
+                        a.icon = category.categoryImg;
+                        db.UpdateTransaction(a);
+                    }    
                     await DisplayAlert("Successful", "Update category successfully", "OK");
                     Application.Current.MainPage = new AppShell(category.categoryType);
 
@@ -64,15 +71,40 @@ namespace BudgetApp
         private async void DeleteCateBtn_Clicked(object sender, EventArgs e)
         {
             TransactionDatabase db = new TransactionDatabase();
-            if (db.DeleteCategory(category))
+            List<DetailTransactionClass> deleteTransactionLst = db.GetTransactionByCateID(category.cateID.ToString());
+            int lstTranCount = deleteTransactionLst.Count;
+            if (lstTranCount == 0)
             {
-                await DisplayAlert("Successful", "Delete category successfully", "OK");
-                Application.Current.MainPage = new AppShell(category.categoryType);
+                if (db.DeleteCategory(category))
+                {
+                    await DisplayAlert("Successful", "Delete category successfully", "OK");
+                    Application.Current.MainPage = new AppShell(category.categoryType);
 
+                }
+                else
+                {
+                    DisplayAlert("Fail", "Delete category failed", "OK");
+                }
             }
             else
             {
-                DisplayAlert("Fail", "Delete category failed", "OK");
+                bool delete = await DisplayAlert("Delete category", "Category " + category.categoryName + " has " + lstTranCount.ToString() + " transaction. Do you want to delete!!!", "Delete", "Cancel");
+                if (delete)
+                {
+                    if(db.DeleteCategory(category))
+                    {
+                        foreach (var a in deleteTransactionLst)
+                        {
+                            db.DeleteTransaction(a);
+                        }
+                        //await DisplayAlert("Successful", "Delete category successfully", "OK");
+                        Application.Current.MainPage = new AppShell(category.categoryType);
+                    }
+                    else
+                    {
+                        DisplayAlert("Fail", "Delete category failed", "OK");
+                    }
+                }    
             }
         }
     }
