@@ -16,11 +16,18 @@ namespace BudgetApp
     {
         string categoryTypeName;
         string categoryImgName;
+        //MyFirebaseAuthentication myAuth;
+        string userID; 
         TransactionDatabase db = new TransactionDatabase();
         List<CategoryTypeClass> categoryListItem = new List<CategoryTypeClass>();
+        
         public AddTransactionPage()
         {
             InitializeComponent();
+            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+            //userID = myAuth.GetUid();
+            List<LoginCheckClass> loginCheck = db.GetLoginCheck();
+            userID = loginCheck[0].userID;
             CategoryListInit();
             categoryList.ItemsSource = categoryListItem;
         }
@@ -104,7 +111,7 @@ namespace BudgetApp
 
                     if (categoryTypeName == "Expense")
                     {
-                        newBudget.transactionColor = "red";
+                        newBudget.transactionColor = "#ff3847";
                         newBudget.categoryType = "Expense";
                     }
                     else
@@ -115,7 +122,10 @@ namespace BudgetApp
                     }
 
                     TransactionDatabase db = new TransactionDatabase();
-                    Console.WriteLine(newBudget);
+                    //newBudget.bID = Guid.NewGuid().ToString();
+
+                    newBudget.userID = userID;
+
                     if (db.AddNewTransaction(newBudget))
                     {
                         await DisplayAlert("Successful", "Add new transaction successfully", "OK");
@@ -124,16 +134,16 @@ namespace BudgetApp
                     }
                     else
                     {
-                        DisplayAlert("Fail", "Add new transaction failed", "OK");
+                       await DisplayAlert("Fail", "Add new transaction failed", "OK");
                     }
                 }
                 else
                 {
-                    DisplayAlert("Fail", "Please type full information", "OK");
+                    await DisplayAlert("Fail", "Please type full information", "OK");
                 }
             }
             catch{
-                DisplayAlert("Fail", "Please type full information", "OK");
+                await DisplayAlert("Fail", "Please type full information", "OK");
             }
         }
         private void CategoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -151,8 +161,7 @@ namespace BudgetApp
             chooseCategory.Text = budgetSelected.categoryName;
             categoryIcon.Source = budgetSelected.categoryImg;
             categoryTypeName = budgetSelected.categoryType;
-
-            
+ 
         }
 
     }

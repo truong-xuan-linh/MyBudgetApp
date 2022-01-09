@@ -41,18 +41,19 @@
                                VerticalOptions="Center" HorizontalOptions="Start"/>
                     </Grid>
                     <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
-                        <ImageButton x:Name="AddCateBtn" Source="checkedicon.png" 
-                                     BackgroundColor="White"
-                                     HeightRequest="70"
-                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
-                                     
-                                     Clicked="AddCateBtn_Clicked"/>
                         <ImageButton x:Name="CancelCateBtn" Source="cancelicon.png" 
                                      BackgroundColor="White"
                                      HeightRequest="70"
                                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                      
                                      Clicked="CancelCateBtn_Clicked"/>
+                        <ImageButton x:Name="AddCateBtn" Source="checkedicon.png" 
+                                     BackgroundColor="White"
+                                     HeightRequest="70"
+                                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                     
+                                     Clicked="AddCateBtn_Clicked"/>
+                        
                     </StackLayout>
 
                 </StackLayout>  

@@ -10,21 +10,28 @@ using Xamarin.Forms.Xaml;
 namespace BudgetApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class ExpenseCategoryPage : ContentPage
     {
         TransactionDatabase db = new TransactionDatabase();
         List<CategoryClass> categoryClasses = new List<CategoryClass>();
+        //MyFirebaseAuthentication myAuth;
+        string uID;
         public ExpenseCategoryPage()
         {
-           
+            
             InitializeComponent();
+            uID = db.GetLoginCheck()[0].userID;
             cateInit();
+            
             categoryClasses = db.GetCategoryClasses("Expense");
             LstExpense.ItemsSource = categoryClasses;
             
         }
         private void cateInit()
         {
+            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+  
             List<CategoryClass> CateLst = db.GetAllCategoryClasses();
             if (CateLst.Count == 0)
             {
@@ -32,6 +39,7 @@ namespace BudgetApp
                 category.categoryType = "Income";
                 category.categoryImg = "icon_0.png";
                 category.categoryName = "Scholarship";
+                category.userID = uID;
                 db.AddNewCategory(category);
 
                 category.categoryImg = "icon_26.png";

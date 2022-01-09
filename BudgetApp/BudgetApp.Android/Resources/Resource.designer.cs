@@ -21094,19 +21094,22 @@ namespace BudgetApp.Droid
 			public const int test_custom_background = 2131165448;
 			
 			// aapt resource value: 0x7F070109
-			public const int tooltip_frame_dark = 2131165449;
+			public const int theme = 2131165449;
 			
 			// aapt resource value: 0x7F07010A
-			public const int tooltip_frame_light = 2131165450;
+			public const int tooltip_frame_dark = 2131165450;
 			
 			// aapt resource value: 0x7F07010B
-			public const int transaction = 2131165451;
+			public const int tooltip_frame_light = 2131165451;
 			
 			// aapt resource value: 0x7F07010C
-			public const int transparent = 2131165452;
+			public const int transaction = 2131165452;
 			
 			// aapt resource value: 0x7F07010D
-			public const int user = 2131165453;
+			public const int transparent = 2131165453;
+			
+			// aapt resource value: 0x7F07010E
+			public const int user = 2131165454;
 			
 			static Drawable()
 			{

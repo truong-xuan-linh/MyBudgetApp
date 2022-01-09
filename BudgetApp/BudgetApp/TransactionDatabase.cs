@@ -21,7 +21,7 @@ namespace BudgetApp
 
                 connection.CreateTable<DetailTransactionClass>();
                 connection.CreateTable<CategoryClass>();
-
+                connection.CreateTable<LoginCheckClass>();
 
                 return true;
             }
@@ -112,8 +112,6 @@ namespace BudgetApp
         {
 
             try { 
-
-
                 string path = System.IO.Path.Combine(folder, datafolder);
                 var connection = new SQLiteConnection(path);
                 connection.Insert(Budget);
@@ -156,7 +154,23 @@ namespace BudgetApp
                 return null;
             }
         }
-       
+
+        public List<CategoryClass> GetAllCategory()
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                string year = DateTime.Now.Year.ToString();
+                return connection.Query<CategoryClass>("select * from CategoryClass where categoryName is not null");
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public int GetTotalMoney()
         {
             int totalMoney = 0;
@@ -183,38 +197,19 @@ namespace BudgetApp
                 return 0;
             }
         }
-        public List<TotalTransactionMonthClass> GetTotalMoneyByMonth(string month, string year, bool income)
+        public List<DetailTransactionClass> GetTotalMoneyByMonth(string month, string year, bool income)
         {
-            List<TotalTransactionMonthClass> totalTransactionMonth =new List<TotalTransactionMonthClass>();
             string path = System.IO.Path.Combine(folder, datafolder);
             var connection = new SQLiteConnection(path);
-            List<DetailTransactionClass> monthTransaction;
-            monthTransaction =  connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay like '%" + month+"/"+ year + "'");
-            string[] categoryNames = { "Shopping", "Salary", "Food" };
 
-            if (income = true)
+            if (income == true)
             {
-                foreach (string name in categoryNames)
-                {
-                    int k = 0;
-                    int incomeMoney = 0;
-                    foreach (DetailTransactionClass transaction in monthTransaction)
-                    {
-                        if (transaction.transactionName == name)
-                        {
-                            incomeMoney = incomeMoney + transaction.transactionMoney;
-                            k = 1;
-                        }
-
-                    }
-                    if (k == 1)
-                    {
-                        totalTransactionMonth.Add(new TotalTransactionMonthClass() { transactionName = name, totalMoney = (float)incomeMoney });
-                    }
-
-                }
+                return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay like '%" + month + "/" + year + "' and categoryType = 'Income'");
             }
-            return totalTransactionMonth;
+            else
+            {
+                return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay like '%" + month + "/" + year + "' and categoryType = 'Expense'");
+            }
         }
         public (List<TransactionDateClass>, int, int) GetTransactionByMonth(string year)
         {
@@ -317,5 +312,95 @@ namespace BudgetApp
                 return false;
             }
         }
+        public bool DeleteAllTransaction()
+        {
+            try
+            {
+                TransactionDatabase db = new TransactionDatabase();
+
+                List < DetailTransactionClass > allTransaction = db.GetAllTransaction();
+
+
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+
+                foreach(DetailTransactionClass transaction in allTransaction)
+                {
+                    connection.Delete(transaction);
+                }
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool DeleteAllCategory()
+        {
+            try
+            {
+                TransactionDatabase db = new TransactionDatabase();
+
+                List<CategoryClass> allCategory = db.GetAllCategory();
+
+                foreach (CategoryClass category in allCategory)
+                {
+                    DeleteCategory(category);
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
+
+        public bool AddNewLoginCheck(LoginCheckClass loginInf)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                connection.Insert(loginInf);
+                return true;
+            }
+            catch
+            {
+                return false;
+
+            }
+        }
+        public bool UpdateLoginCheck(LoginCheckClass loginInf)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                connection.Update(loginInf);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public List<LoginCheckClass> GetLoginCheck()
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+                return connection.Query<LoginCheckClass>("select * from LoginCheckClass where cID is not null");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }

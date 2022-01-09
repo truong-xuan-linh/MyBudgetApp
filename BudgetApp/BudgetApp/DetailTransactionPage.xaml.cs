@@ -84,14 +84,17 @@ namespace BudgetApp
 
                     if (categoryTypeName == "Expense")
                     {
-                        transaction.transactionColor = "red";
+                        transaction.transactionColor = "#ff3847";
+                        transaction.categoryType = "Expense";
                     }
                     else
                     {
-                        transaction.transactionColor = "blue";
+                        transaction.transactionColor = "#3366CC";
+                        transaction.categoryType = "Income";
                     }
 
                     TransactionDatabase db = new TransactionDatabase();
+
                     if (db.UpdateTransaction(transaction))
                     {
                         await DisplayAlert("Successful", "Update transaction successfully", "OK");

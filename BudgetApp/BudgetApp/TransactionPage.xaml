@@ -17,7 +17,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Frame Padding="0" CornerRadius="20" IsClippedToBounds="True" Margin="0,-25,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
-                <Image  Source="orange.jpg" Aspect="Fill" HeightRequest="150" VerticalOptions="StartAndExpand"></Image>
+                <Image  Source="theme.png" Aspect="Fill" HeightRequest="150" VerticalOptions="StartAndExpand"></Image>
             </Frame>
             <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,50">
                 <Label Text="Total:" TextColor="White" FontSize="40" FontAttributes="Bold" VerticalOptions="Center"  ></Label>

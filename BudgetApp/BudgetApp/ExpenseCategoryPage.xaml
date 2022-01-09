@@ -8,7 +8,7 @@
         <ToolbarItem x:Name="AddCateBtn" Text="ADD" Clicked="AddCateBtn_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView x:Name="LstExpense" ItemSelected="LstExpense_ItemSelected">
+        <ListView Margin="0,10,10,10" x:Name="LstExpense" ItemSelected="LstExpense_ItemSelected">
             <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>

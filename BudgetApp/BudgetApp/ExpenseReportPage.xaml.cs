@@ -17,6 +17,7 @@ namespace BudgetApp
     {
         List<string> allYear = new List<string>();
         string globalYear = DateTime.Now.Year.ToString();
+        List<String> ctgrNames = new List<string>();
         public ExpenseReportPage()
         {
             InitializeComponent();
@@ -26,10 +27,16 @@ namespace BudgetApp
             } 
             else
             {
-                DrawColumnChart(globalYear);
+                TransactionDatabase db = new TransactionDatabase();
+                List<CategoryClass> category = db.GetAllCategory();
+                foreach (CategoryClass ctgr in category)
+                {
+                    ctgrNames.Add(ctgr.categoryName);
+                }
                 YearPickerInit();
                 MonthPickerInit(globalYear);
-                DonutMonthChart();
+                
+               
             }    
         }
         bool checkEmpty()
@@ -84,6 +91,7 @@ namespace BudgetApp
             allYear.Sort();
             allYear.Reverse();
             yearPicker.ItemsSource = allYear;
+            DrawColumnChart(globalYear);
         }
         void MonthPickerInit(string year)
         {
@@ -108,34 +116,49 @@ namespace BudgetApp
             }
             monthPicker.Title = allMonthString[0];
             monthPicker.ItemsSource = allMonthString;
+            DonutMonthChart();
         }
 
         void DonutMonthChart()
         {
             string month = DateTime.ParseExact(monthPicker.Title, "M/yyyy", CultureInfo.InvariantCulture).Month.ToString();
             string year = DateTime.ParseExact(monthPicker.Title, "M/yyyy", CultureInfo.InvariantCulture).Year.ToString();
-            bool income = true;
+            bool income = false;
 
             TransactionDatabase db = new TransactionDatabase();
-
             List<ChartEntry> monthList = new List<ChartEntry>();
+            List<DetailTransactionClass> monthTransaction = db.GetTotalMoneyByMonth(month, year, income);
 
 
-            List<TotalTransactionMonthClass> totalMonth = db.GetTotalMoneyByMonth(month, year, income);
-            String[] colors = { "#CC0000", "#00FF66", "#CC99CC" };
-            int k = 0;
-            foreach (TotalTransactionMonthClass moneyMonth in totalMonth)
+            string[] colors = { "#CC0000", "#00FF66", "#CC99CC", "#CC99CC", "#CC99CC", "#CC99CC", "#CC99CC", "#CC99CC" };
+            int i = 0;
+            foreach (string name in ctgrNames)
             {
-                monthList.Add(new ChartEntry(moneyMonth.totalMoney)
+                int k = 0;
+                int money = 0;
+                foreach (DetailTransactionClass transaction in monthTransaction)
                 {
-                    Color = SKColor.Parse(colors[k]),
-                    Label = moneyMonth.transactionName,
-                    ValueLabel = moneyMonth.totalMoney.ToString(),
-                    ValueLabelColor = SKColor.Parse(colors[k]),
-                    TextColor = SKColor.Parse("#000000")
+                    if (transaction.transactionName == name)
+                    {
+                        money = money + transaction.transactionMoney;
+                        k = 1;
+                    }
+                }
+                if (k == 1)
+                {
 
-                });
-                k = k + 1;
+                    monthList.Add(new ChartEntry(money)
+                    {
+                        Color = SKColor.Parse(colors[i]),
+                        Label = name,
+                        ValueLabel = money.ToString(),
+                        ValueLabelColor = SKColor.Parse(colors[i]),
+                        TextColor = SKColor.Parse("#000000")
+                    });
+                    k = 0;
+                    i = i + 1;
+                }
+                
             }
             donutChart.Chart = new DonutChart() { Entries = monthList, LabelTextSize = 30 };
 

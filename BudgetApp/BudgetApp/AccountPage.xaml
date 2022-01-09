@@ -16,6 +16,14 @@
                     BackgroundColor="White"
                     Clicked="CurrencyBtn_Clicked"/>
             
+            <Button Text="Sync" x:Name="btnSync" 
+                    TextColor="#ff3847"
+                    BorderColor="#75c7fb"
+                    BorderWidth="2"
+                    CornerRadius="20"
+                    BackgroundColor="White"
+                    Clicked="btnSync_Clicked"/>
+            
             <Button Text="Sign out" x:Name="SignOutBtn" 
                     TextColor="#ff3847"
                     BorderColor="#75c7fb"

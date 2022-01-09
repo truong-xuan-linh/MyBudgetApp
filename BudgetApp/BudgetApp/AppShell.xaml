@@ -4,11 +4,11 @@
        xmlns:views="clr-namespace:BudgetApp"
        x:Class="BudgetApp.AppShell"
        Shell.NavBarIsVisible="False"
-       Shell.BackgroundColor="Orange">
+       Shell.BackgroundColor="#2193b0 ">
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ThemeColor">orange</Color>
+            <Color x:Key="ThemeColor">#2193b0 </Color>
             <Color x:Key="GrayColor">#B7ACA9</Color>
             <Color x:Key="BgColor">white</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -39,7 +39,8 @@
             <ShellContent Shell.NavBarIsVisible="True" ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Report" Icon="report.png">
+        <Tab Title="Report" Icon="report.png" Shell.ForegroundColor="Black" 
+             Shell.UnselectedColor="Black">
             <ShellContent Title="Income" ContentTemplate="{DataTemplate views:IncomeReportPage}"></ShellContent>
             <ShellContent Title="Expense" ContentTemplate="{DataTemplate views:ExpenseReportPage}"></ShellContent>
         </Tab>

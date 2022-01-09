@@ -15,9 +15,15 @@ namespace BudgetApp
         string img;
         String type;
         String Addflag = "Add";
+        //MyFirebaseAuthentication myAuth;
+        TransactionDatabase db = new TransactionDatabase();
+        string userID;
         public AddCategoryPage()
         {
             InitializeComponent();
+            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+            List<LoginCheckClass> loginCheck = db.GetLoginCheck();
+            userID = loginCheck[0].userID;
             
         }
         public AddCategoryPage(string type_p)
@@ -25,7 +31,16 @@ namespace BudgetApp
             InitializeComponent();
             Pagelbl.Text = "Add new " + type_p + " category";
             type = type_p;
+            if (CateIcon.Source is Xamarin.Forms.FileImageSource)
+            {
+                Xamarin.Forms.FileImageSource objFileImageSource = (Xamarin.Forms.FileImageSource)CateIcon.Source;
+                //
+                // Access the file that was specified:-
+                img = objFileImageSource.File;
+            }
             Typelbl.Text = type;
+            List<LoginCheckClass> loginCheck = db.GetLoginCheck();
+            userID = loginCheck[0].userID;
 
         }
         public AddCategoryPage(string img_p, string type_p)
@@ -36,7 +51,8 @@ namespace BudgetApp
             type = type_p;
             Typelbl.Text = type;
             CateIcon.Source = img;
-            
+            List<LoginCheckClass> loginCheck = db.GetLoginCheck();
+            userID = loginCheck[0].userID;
         }
         
         private async void AddCateBtn_Clicked(object sender, EventArgs e)
@@ -47,8 +63,11 @@ namespace BudgetApp
                 category.categoryImg = img;
                 category.categoryName = CateEntry.Text;
                 category.categoryType = type;
+
                 TransactionDatabase db = new TransactionDatabase();
-                if(db.AddNewCategory(category))
+                category.userID = userID;
+                Console.WriteLine(userID);
+                if (db.AddNewCategory(category))
                 {
                     await DisplayAlert("Successful", "Add new category successfully", "OK");
                     //await Shell.Current.GoToAsync("//main/Category");
@@ -57,12 +76,12 @@ namespace BudgetApp
                 }
                 else
                 {
-                    DisplayAlert("Fail", "Add new category failed", "OK");
+                    await DisplayAlert("Fail", "Add new category failed", "OK");
                 }
             }
             else
             {
-                DisplayAlert("Fail", "Please type full information", "OK");
+                await DisplayAlert("Fail", "Please type full information", "OK");
             }
         }
 
