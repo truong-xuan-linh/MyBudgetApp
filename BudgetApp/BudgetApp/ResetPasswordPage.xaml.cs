@@ -13,9 +13,20 @@ namespace BudgetApp
     public partial class ResetPasswordPage : ContentPage
     {
         MyFirebaseAuthentication myAuth;
-        public ResetPasswordPage()
+        public ResetPasswordPage(string title)
         {
             InitializeComponent();
+            ResetPWPageTiile.Text = title;
+            if(title == "Change Password")
+            {
+                textLbl.IsVisible = false;
+                textLbl1.IsVisible = true;
+            }
+            else
+            {
+                textLbl.IsVisible = true;
+                textLbl1.IsVisible = false;
+            }
             myAuth = DependencyService.Get<MyFirebaseAuthentication>();
         }
 
@@ -42,6 +53,11 @@ namespace BudgetApp
         private void SignInTap_Tapped(object sender, EventArgs e)
         {
             Application.Current.MainPage = new LoginPage();
+        }
+
+        private void BackTap_Tapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new AppShell("Account");
         }
     }
 }

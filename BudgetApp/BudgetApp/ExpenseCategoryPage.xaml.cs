@@ -22,48 +22,12 @@ namespace BudgetApp
             
             InitializeComponent();
             uID = db.GetLoginCheck()[0].userID;
-            cateInit();
             
             categoryClasses = db.GetCategoryClasses("Expense");
             LstExpense.ItemsSource = categoryClasses;
             
         }
-        private void cateInit()
-        {
-            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
-  
-            List<CategoryClass> CateLst = db.GetAllCategoryClasses();
-            if (CateLst.Count == 0)
-            {
-                CategoryClass category = new CategoryClass();
-                category.categoryType = "Income";
-                category.categoryImg = "icon_0.png";
-                category.categoryName = "Scholarship";
-                category.userID = uID;
-                db.AddNewCategory(category);
-
-                category.categoryImg = "icon_26.png";
-                category.categoryName = "Salary";
-                db.AddNewCategory(category);
-
-                category.categoryImg = "icon_48.png";
-                category.categoryName = "Save Money";
-                db.AddNewCategory(category);
-
-                category.categoryType = "Expense";
-                category.categoryImg = "icon_12.png";
-                category.categoryName = "Food";
-                db.AddNewCategory(category);
-
-                category.categoryImg = "icon_34.png";
-                category.categoryName = "Water Bill";
-                db.AddNewCategory(category);
-
-                category.categoryImg = "icon_36.png";
-                category.categoryName = "Gas Bill";
-                db.AddNewCategory(category);
-            }    
-        }
+        
         
         private void AddCateBtn_Clicked(object sender, EventArgs e)
         {

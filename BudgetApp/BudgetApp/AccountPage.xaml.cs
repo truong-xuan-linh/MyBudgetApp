@@ -17,13 +17,14 @@ namespace BudgetApp
         public AccountPage()
         {
             InitializeComponent();
+            loading.IsBusy = false;
             //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
             EmailLabel.Text = db.GetLoginCheck()[0].userName;
         }
 
         private async void SignOutBtn_Clicked(object sender, EventArgs e)
         {
-
+            loading.IsBusy = true;
             try
             {
                 MyFirebaseAuthentication myAuth;
@@ -52,18 +53,17 @@ namespace BudgetApp
             }
             catch
             {
+                loading.IsBusy = false;
                 await DisplayAlert("Failed", "Please check your internet connection to backup before sign out", "OK");
             }
 
         }
 
-        private void CurrencyBtn_Clicked(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private async void btnSync_Clicked(object sender, EventArgs e)
         {
+            loading.IsBusy = true;
             try
             {
                 await Delete();
@@ -73,11 +73,12 @@ namespace BudgetApp
                 await DeleteCategory();
                 await AddCategory();
                 await UpdateCategory();
-
+                loading.IsBusy = false;
                 await DisplayAlert("Successful", "Backup your data successfully", "OK");
             }
             catch
             {
+                loading.IsBusy = false;
                 await DisplayAlert("Failed", "Please check your internet connection", "OK");
             }
             
@@ -149,7 +150,7 @@ namespace BudgetApp
             TransactionDatabase db = new TransactionDatabase();
             TransactionFirebase fb = new TransactionFirebase();
             List<CategoryClass> fb_categories = await fb.GetAllCategory();
-            List<CategoryClass> db_categories = db.GetAllCategory();
+            List<CategoryClass> db_categories = db.GetAllCategoryClasses();
 
             List<int> db_cateID = new List<int>();
 
@@ -172,7 +173,7 @@ namespace BudgetApp
             TransactionDatabase db = new TransactionDatabase();
             TransactionFirebase fb = new TransactionFirebase();
             List<CategoryClass> fb_categories = await fb.GetAllCategory();
-            List<CategoryClass> db_categories = db.GetAllCategory();
+            List<CategoryClass> db_categories = db.GetAllCategoryClasses();
 
             List<int> fb_cateID = new List<int>();
 
@@ -194,7 +195,7 @@ namespace BudgetApp
             TransactionDatabase db = new TransactionDatabase();
             TransactionFirebase fb = new TransactionFirebase();
             List<CategoryClass> fb_categories = await fb.GetAllCategory();
-            List<CategoryClass> db_categories = db.GetAllCategory();
+            List<CategoryClass> db_categories = db.GetAllCategoryClasses();
 
             foreach (CategoryClass category in db_categories)
             {
@@ -203,6 +204,11 @@ namespace BudgetApp
                     fb.UpdateCategory(category);
                 }
             }
+        }
+
+        private void ChangePWBtn_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new ResetPasswordPage("Change Password");
         }
     }
 }

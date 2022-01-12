@@ -16,7 +16,9 @@
     <PackageReference Include="Plugin.DeviceOrientation" Version="1.0.7" />
     <PackageReference Include="Prism.Forms" Version="8.1.97" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.4.0.41" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.4.0.38" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="19.4.0.41" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />

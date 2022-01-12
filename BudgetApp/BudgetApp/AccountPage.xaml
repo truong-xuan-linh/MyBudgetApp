@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.AccountPage"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
@@ -9,30 +10,39 @@
                 <Image Source="accountlogo.png" WidthRequest="100" HeightRequest="100"/>
                 <Label x:Name="EmailLabel" HorizontalOptions="Center" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
             </StackLayout>
+            <StackLayout Padding="40">
+                <Button Text="Change Password" x:Name="ChangePWBtn" 
+                        TextColor="White"
+                        BorderColor="#2193b0"
+                        BorderWidth="2"
+                        CornerRadius="50"
+                        BackgroundColor="#2193b0"
+                        Clicked="ChangePWBtn_Clicked"/>
             
-            <Button Text="Select Currency" x:Name="CurrencyBtn" 
-                    TextColor="#ff3847"
-                    BorderColor="#75c7fb"
-                    BorderWidth="2"
-                    CornerRadius="20"
-                    BackgroundColor="White"
-                    Clicked="CurrencyBtn_Clicked"/>
+                <Button Text="Back Up" x:Name="btnSync" 
+                        TextColor="White"
+                        BorderColor="#2193b0"
+                        BorderWidth="2"
+                        CornerRadius="50"
+                        BackgroundColor="#2193b0"
+                        Clicked="btnSync_Clicked"/>
             
-            <Button Text="Sync" x:Name="btnSync" 
-                    TextColor="#ff3847"
-                    BorderColor="#75c7fb"
-                    BorderWidth="2"
-                    CornerRadius="20"
-                    BackgroundColor="White"
-                    Clicked="btnSync_Clicked"/>
-            
-            <Button Text="Sign out" x:Name="SignOutBtn" 
-                    TextColor="#ff3847"
-                    BorderColor="#75c7fb"
-                    BorderWidth="2"
-                    CornerRadius="20"
-                    BackgroundColor="White"
-                    Clicked="SignOutBtn_Clicked"/>
+                <Button Text="Sign out" x:Name="SignOutBtn" 
+                        TextColor="White"
+                        BorderColor="#2193b0"
+                        BorderWidth="2"
+                        CornerRadius="50"
+                        BackgroundColor="#2193b0"
+                        Clicked="SignOutBtn_Clicked"/>
+            </StackLayout>
+            <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <busyindicator:SfBusyIndicator x:Name="loading"
+                                               AnimationType="Cupertino" 
+                                               ViewBoxWidth = "50"
+                                               TextColor="#2193b0"
+                                               ViewBoxHeight="50"
+                                               />
+            </AbsoluteLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

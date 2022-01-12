@@ -23,6 +23,7 @@ namespace BudgetApp
             InitializeComponent();
             CategoryListInit();
             categoryListt.ItemsSource = categoryListItem;
+            
         }
         void CategoryListInit()
         {
@@ -36,8 +37,6 @@ namespace BudgetApp
             foreach (var a in db.GetCategoryClasses("Expense"))
                 Expense.Add(a);
             categoryListItem.Add(Expense);
-
-
         }
 
         DetailTransactionClass transaction;
@@ -46,7 +45,15 @@ namespace BudgetApp
             InitializeComponent();
             CategoryListInit();
             categoryListt.ItemsSource = categoryListItem;
-            entryMoney.Text = transaction.transactionMoney.ToString();
+            entryMoney.Value = transaction.transactionMoney.ToString();
+            if (transaction.categoryType == "Income")
+            {
+                entryMoney.TextColor = Color.FromHex("#2193b0");
+            }
+            else
+            {
+                entryMoney.TextColor = Color.FromHex("#ff3847");
+            }
             datePicker.Date = DateTime.ParseExact(transaction.transactionDay, "d/M/yyyy", CultureInfo.InvariantCulture);
             categoryIcon.Source = transaction.icon;
             chooseCategory.Text = transaction.transactionName;
@@ -74,9 +81,9 @@ namespace BudgetApp
             }
             try
             {
-                if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
+                if ((entryMoney.Value != null) && (categoryImgName != "questionicon.png") && entryMoney.Value.ToString() != "0")
                 {
-                    transaction.transactionMoney = Int32.Parse(entryMoney.Text);
+                    transaction.transactionMoney = Int32.Parse(entryMoney.Value.ToString());
                     transaction.categoryType = categoryTypeName;
                     transaction.icon = categoryImgName;
 
@@ -95,7 +102,7 @@ namespace BudgetApp
 
                     if (db.UpdateTransaction(transaction))
                     {
-                        await DisplayAlert("Successful", "Update transaction successfully", "OK");
+                        //await DisplayAlert("Successful", "Update transaction successfully", "OK");
 
                         Application.Current.MainPage = new AppShell();
                     }
@@ -179,11 +186,18 @@ namespace BudgetApp
 
         private void categoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            CategoryClass budgetSelected = (CategoryClass)categoryListt.SelectedItem;
-            
-            chooseCategory.Text = budgetSelected.categoryName;
-            categoryIcon.Source = budgetSelected.categoryImg;
-            categoryTypeName = budgetSelected.categoryType;
+            CategoryClass cateSelected = (CategoryClass)categoryListt.SelectedItem;
+            if (cateSelected.categoryType == "Income")
+            {
+                entryMoney.TextColor = Color.FromHex("#2193b0");
+            }
+            else
+            {
+                entryMoney.TextColor = Color.FromHex("#ff3847");
+            }
+            chooseCategory.Text = cateSelected.categoryName;
+            categoryIcon.Source = cateSelected.categoryImg;
+            categoryTypeName = cateSelected.categoryType;
         }
     }
 }

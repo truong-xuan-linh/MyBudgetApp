@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.ExpenseReportPage"
              xmlns:Charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
-             Shell.NavBarIsVisible="False">
+             Title="Report">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Picker x:Name= "yearPicker" WidthRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" Title="2021" SelectedIndexChanged="yearPicker_SelectedIndexChanged"></Picker>
+                <Picker x:Name= "yearPicker" Title="Select year" WidthRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" SelectedIndexChanged="yearPicker_SelectedIndexChanged"></Picker>
                 <Charts:ChartView x:Name="columnChart" HeightRequest="300" VerticalOptions="Start" HorizontalOptions="Fill"></Charts:ChartView>
 
-                <Picker x:Name= "monthPicker" WidthRequest="70" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" Title="1/2021" SelectedIndexChanged="monthPicker_SelectedIndexChanged"></Picker>
+                <Picker x:Name= "monthPicker" Title="Select month" WidthRequest="70" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" SelectedIndexChanged="monthPicker_SelectedIndexChanged"></Picker>
                 <Charts:ChartView x:Name="donutChart" HeightRequest="300"></Charts:ChartView>
             </StackLayout>
         </ScrollView>

@@ -18,21 +18,23 @@ namespace BudgetApp
         int totalExpense;
         int totalIncome;
         string globalYear = DateTime.Now.Year.ToString();
+        CultureInfo current = CultureInfo.CurrentCulture;
 
         public TransactionPage()
         {
             InitializeComponent();
             DetailBudgetInit();
+            allYear.Add(globalYear);
             YearPickerInit();
+            yearPicker.SelectedItem = globalYear;
             TransactionDatabase db = new TransactionDatabase();
-            Income.Text = totalIncome.ToString();
-            Expense.Text = totalExpense.ToString();
-            totalMoney.Text = db.GetTotalMoney().ToString();
+            Income.Text = totalIncome.ToString("n0");
+            Expense.Text = totalExpense.ToString("n0");
+            totalMoney.Text = db.GetTotalMoney().ToString("n0");
             incomeExpenseList.ItemsSource = dateTransaction;
         }
         void YearPickerInit()
         {
-            yearPicker.Title = globalYear;
 
             TransactionDatabase db = new TransactionDatabase();
             List<DetailTransactionClass> allTransaction = db.GetAllTransaction();
@@ -66,11 +68,7 @@ namespace BudgetApp
         {
             var yearChoose = (Picker)sender;
             int lineChoose = yearChoose.SelectedIndex;
-            if (lineChoose >= 0)
-            {
-                yearPicker.Title = (string)yearChoose.SelectedItem;
-            }
-            this.globalYear = yearPicker.Title;
+            this.globalYear = (string)yearChoose.SelectedItem; ;
             DetailBudgetInit();
             Income.Text = totalIncome.ToString();
             Expense.Text = totalExpense.ToString();

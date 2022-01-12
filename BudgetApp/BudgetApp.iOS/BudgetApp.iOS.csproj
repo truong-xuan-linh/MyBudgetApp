@@ -126,6 +126,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>19.4.0.38</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox">
+      <Version>19.4.0.41</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>

@@ -16,7 +16,6 @@ namespace BudgetApp
     {
         string categoryTypeName;
         string categoryImgName;
-        //MyFirebaseAuthentication myAuth;
         string userID; 
         TransactionDatabase db = new TransactionDatabase();
         List<CategoryTypeClass> categoryListItem = new List<CategoryTypeClass>();
@@ -25,8 +24,6 @@ namespace BudgetApp
         public AddTransactionPage()
         {
             InitializeComponent();
-            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
-            //userID = myAuth.GetUid();
             List<LoginCheckClass> loginCheck = db.GetLoginCheck();
             userID = loginCheck[0].userID;
             CategoryListInit();
@@ -96,15 +93,13 @@ namespace BudgetApp
             if (categoryIcon.Source is Xamarin.Forms.FileImageSource)
             {
                 Xamarin.Forms.FileImageSource objFileImageSource = (Xamarin.Forms.FileImageSource)categoryIcon.Source;
-                //
-                // Access the file that was specified:-
                 categoryImgName = objFileImageSource.File;
             }
             try
             {
-                if ((entryMoney.Text != null) && (categoryImgName != "questionicon.png") && entryMoney.Text != "0")
+                if ((entryMoney.Value.ToString() != null) && (categoryImgName != "questionicon.png") && entryMoney.Value.ToString() != "0")
                 {
-                    newBudget.transactionMoney = Int32.Parse(entryMoney.Text);
+                    newBudget.transactionMoney = Int32.Parse(entryMoney.Value.ToString());
 
                     newBudget.icon = categoryImgName;
 
@@ -121,13 +116,12 @@ namespace BudgetApp
                     }
 
                     TransactionDatabase db = new TransactionDatabase();
-                    //newBudget.bID = Guid.NewGuid().ToString();
 
                     newBudget.userID = userID;
 
                     if (db.AddNewTransaction(newBudget))
                     {
-                        await DisplayAlert("Successful", "Add new transaction successfully", "OK");
+                        //await DisplayAlert("Successful", "Add new transaction successfully", "OK");
 
                         Application.Current.MainPage = new AppShell();
                     }
@@ -147,7 +141,7 @@ namespace BudgetApp
         }
         private void CategoryList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            CategoryClass budgetSelected = (CategoryClass)categoryList.SelectedItem;
+            CategoryClass cateSelected = (CategoryClass)categoryList.SelectedItem;
 
             Action<double> callback = input => MyDraggableView.HeightRequest = input;
             double startHeight = 300;
@@ -156,11 +150,18 @@ namespace BudgetApp
             uint length = 500;
             Easing easing = Easing.SinOut;
             MyDraggableView.Animate("anim", callback, startHeight, endiendHeight, rate, length, easing);
-
-            newBudget.cateID = budgetSelected.cateID.ToString();
-            chooseCategory.Text = budgetSelected.categoryName;
-            categoryIcon.Source = budgetSelected.categoryImg;
-            categoryTypeName = budgetSelected.categoryType;
+            if(cateSelected.categoryType == "Income")
+            {
+                entryMoney.TextColor = Color.FromHex("#2193b0");
+            }
+            else
+            {
+                entryMoney.TextColor = Color.FromHex("#ff3847");
+            }
+            newBudget.cateID = cateSelected.cateID.ToString();
+            chooseCategory.Text = cateSelected.categoryName;
+            categoryIcon.Source = cateSelected.categoryImg;
+            categoryTypeName = cateSelected.categoryType;
  
         }
 

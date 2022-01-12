@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.AddCategoryPage"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              Shell.NavBarIsVisible="False">
 
     <ContentPage.Content>
-        
         <Grid>
             <Frame>
                 <StackLayout Orientation="Vertical">
@@ -29,10 +29,19 @@
                                      HeightRequest="70"
                                      VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"
                                      Grid.Column="0" Grid.Row="1"/>
-                        <Entry x:Name="CateEntry" Placeholder="Category Name"
-                               FontSize="Large"
-                               Grid.Column="1" Grid.Row="1"/>
-                        
+                        <inputLayout:SfTextInputLayout
+                                    x:Name="TexInput"
+                                    FocusedColor="Gray"
+                                    Hint="Category Name"
+                                    ContainerType="Filled"
+                                    ErrorColor="#B00020"
+                                    ErrorText="Category existed"
+                                    Grid.Column="1" Grid.Row="1">
+                            <Entry x:Name="CateEntry" PropertyChanged="CateEntry_PropertyChanged"
+                                   FontSize="Large"/>
+
+                        </inputLayout:SfTextInputLayout>
+
                         <Label Text="Type: " Grid.Column="0" Grid.Row="2" FontSize="Large" 
                                TextColor="Black" FontAttributes="Bold"
                                VerticalOptions="Center" HorizontalOptions="Center"/>

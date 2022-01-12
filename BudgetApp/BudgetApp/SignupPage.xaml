@@ -2,38 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.SignupPage"
-             BackgroundColor="#fffee6">
-    <StackLayout Padding="40" VerticalOptions="Center" >
-        <Image Source="applogo.jpg" WidthRequest="130" HeightRequest="130"/>
-        <Label Text="Sign Up" TextColor="#ff3847" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold"/>
-
-        <Entry Keyboard="Text" Placeholder="User Name"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             BackgroundColor="White">
+    <StackLayout Padding="40" VerticalOptions="Start" >
+        
+        <Image Source="mybudgetlogo.jpg" 
+               WidthRequest="140" HeightRequest="140"/>
+        <Label Text="Sign Up" TextColor="#2193b0" HorizontalOptions="Center" 
+               FontSize="40" FontAttributes="Bold"/>
+        <inputLayout:SfTextInputLayout Hint="Email" HelperText="Enter your emnail"
+                                           ContainerType="Outlined" OutlineCornerRadius="50"
+                                           UnfocusedColor="gray" ContainerBackgroundColor="#eae9e9"
+                                           FocusedColor="#2193b0" >
+            <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle Color="gray"/>
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+            <Entry Keyboard="Text"
                ClearButtonVisibility="WhileEditing"
                VerticalOptions="Center" x:Name="uName"/>
+        </inputLayout:SfTextInputLayout>
 
-        <Entry IsPassword="true" Placeholder="Password"
+
+        <inputLayout:SfTextInputLayout Hint="Password" HelperText="Enter your password"
+                                           ContainerType="Outlined" OutlineCornerRadius="50"
+                                           UnfocusedColor="gray" ContainerBackgroundColor="#eae9e9"
+                                           FocusedColor="#2193b0">
+            <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle Color="gray"/>
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+            <Entry IsPassword="true"
                    VerticalOptions="Center"
                    x:Name="pWord"/>
+        </inputLayout:SfTextInputLayout>
         
         <Button Text="Sign up" Grid.ColumnSpan="2"
                     x:Name="SignUpBtn" 
-                    TextColor="#ff3847"
-                    BorderColor="#75c7fb"
+                    TextColor="White"
+                    BorderColor="#2193b0"
                     BorderWidth="2"
                     CornerRadius="50"
-                    BackgroundColor="#fffee6"
+                    BackgroundColor="#2193b0"
                     Clicked="SignUpBtn_Clicked"/>
 
         <Label HorizontalOptions="Center" FontSize="Medium">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Already have an account? " TextColor="#75c7fb"/>
-                    <Span Text="Sign In" TextColor="#ff3847" FontAttributes="Bold"/>
+                    <Span Text="Already have an account? " TextColor="Gray" FontSize="16"/>
+                    <Span Text="Log In" TextColor="#2193b0" FontAttributes="Bold" FontSize="16" TextDecorations="Underline"/>
                 </FormattedString>
             </Label.FormattedText>
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
             </Label.GestureRecognizers>
         </Label>
+        <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <busyindicator:SfBusyIndicator x:Name="loading"
+                                               AnimationType="Cupertino" 
+                                               ViewBoxWidth = "50"
+                                               TextColor="#2193b0"
+                                               ViewBoxHeight="50"
+                                               />
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

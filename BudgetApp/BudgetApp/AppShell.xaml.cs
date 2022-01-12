@@ -28,11 +28,14 @@ namespace BudgetApp
             {
                 main.CurrentItem = IncomeItem;
             }    
-            else
+            else if (CateType == "Expense")
             {
                 main.CurrentItem = ExpenseItem;
-            }    
-
+            }
+            else
+            {
+                main.CurrentItem = AccountItem;
+            }
         }
     }
 }

@@ -29,24 +29,25 @@
             <ShellContent ContentTemplate="{DataTemplate views:TransactionPage}"></ShellContent>
         </Tab>
 
-        <Tab Title="Category" Icon="categories.png" Shell.ForegroundColor="Black" 
+        <Tab Title="Category" Icon="categories.png" 
+             Shell.ForegroundColor="Black" 
              Shell.UnselectedColor="Black" Route="Category">
             <ShellContent x:Name="ExpenseItem" Shell.NavBarIsVisible="True" Title="Expense" Route="Expenses" ContentTemplate="{DataTemplate views:ExpenseCategoryPage}"></ShellContent>
             <ShellContent x:Name="IncomeItem" Shell.NavBarIsVisible="True" Title="Income" Route="Income" ContentTemplate="{DataTemplate views:IncomeCategoryPage}"></ShellContent>
         </Tab>
 
-        <Tab Icon="plusicon.png" >
+        <Tab Icon="plusicon.png">
             <ShellContent Shell.NavBarIsVisible="True" ContentTemplate="{DataTemplate views:AddTransactionPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Report" Icon="report.png" Shell.ForegroundColor="Black" 
              Shell.UnselectedColor="Black">
-            <ShellContent Title="Income" ContentTemplate="{DataTemplate views:IncomeReportPage}"></ShellContent>
-            <ShellContent Title="Expense" ContentTemplate="{DataTemplate views:ExpenseReportPage}"></ShellContent>
+            <ShellContent Title="Expense" Shell.NavBarIsVisible="True" ContentTemplate="{DataTemplate views:ExpenseReportPage}"></ShellContent>
+            <ShellContent Title="Income" Shell.NavBarIsVisible="True" ContentTemplate="{DataTemplate views:IncomeReportPage}"></ShellContent>
         </Tab>
 
         <Tab Title="Account" Icon="user.png">
-            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
+            <ShellContent x:Name="AccountItem" ContentTemplate="{DataTemplate views:AccountPage}"></ShellContent>
             
         </Tab>
     </TabBar>

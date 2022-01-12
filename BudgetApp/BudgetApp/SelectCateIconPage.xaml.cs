@@ -13,26 +13,22 @@ namespace BudgetApp
     public partial class SelectCateIconPage : ContentPage
     {
         string type;
+        string userEntry;
         string flag = "Edit";
         CategoryClass cate;
         public SelectCateIconPage()
         {
             InitializeComponent();
         }
-        public SelectCateIconPage(string type_p, string Addflag)
+        public SelectCateIconPage(string type_p, string Addflag, string Entry_p)
         {
             InitializeComponent();
-            List<CateIconClass> ImageIconList = new List<CateIconClass>();
-            for (int i = 0; i < 50; i++)
-            {
-                string img = "icon_" + i.ToString() + ".png";
-                CateIconClass cateicon = new CateIconClass();
-                cateicon.IconImage = img;
-                ImageIconList.Add(cateicon);
-            }
+            TransactionDatabase db = new TransactionDatabase();
+            List<CateIconClass> ImageIconList =db.GetAllCateIcon();
             SelectIcon.ItemsSource = ImageIconList;
             type = type_p;
             flag = Addflag;
+            userEntry = Entry_p;
         }
         public SelectCateIconPage(CategoryClass category)
         {
@@ -54,7 +50,7 @@ namespace BudgetApp
             string img = (e.CurrentSelection.FirstOrDefault() as CateIconClass)?.IconImage; ;
             if (flag == "Add")
             {
-                Navigation.PushAsync(new AddCategoryPage(img, type));
+                Navigation.PushAsync(new AddCategoryPage(img, type, userEntry));
             }    
             else
             {

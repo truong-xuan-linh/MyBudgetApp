@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetApp.DetailTransactionPage"            
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              BackgroundColor="LightGray"
              >
     
@@ -27,8 +28,9 @@
                         </Grid.RowDefinitions>
 
                         <Image Grid.Column="0" Grid.Row="1" Source="moneyicon.png" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End"></Image>
-                        <Entry x:Name="entryMoney" Grid.Column="1" Grid.Row="1" Placeholder='0' PlaceholderColor="Orange" FontSize="40" Keyboard="Numeric" TextColor="DarkOrange"></Entry>
-
+                        <syncfusion:SfNumericTextBox x:Name="entryMoney" AllowNull="true" Grid.Column="1" Grid.Row="1"
+                                                     Watermark="0" WatermarkColor="Gray"
+                                                     FontSize="40" FormatString="n0"/>
                         <Image Grid.Column="0" Grid.Row="2" Source="scheduleicon.png" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End"></Image>
                         <DatePicker x:Name="datePicker" Format="dd/MM/yyyy" Grid.Column="1" Grid.Row="2" FontSize="40" TextColor="Black"></DatePicker>
 

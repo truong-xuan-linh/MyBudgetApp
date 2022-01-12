@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              x:Class="BudgetApp.IncomeReportPage"
-             Shell.NavBarIsVisible="False"
+             Title="Report"
              >
     <ContentPage.Content>
         <ScrollView>

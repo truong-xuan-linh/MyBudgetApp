@@ -22,6 +22,7 @@ namespace BudgetApp
                 connection.CreateTable<DetailTransactionClass>();
                 connection.CreateTable<CategoryClass>();
                 connection.CreateTable<LoginCheckClass>();
+                connection.CreateTable<CateIconClass>();
 
                 return true;
             }
@@ -30,8 +31,74 @@ namespace BudgetApp
                 return false;
                 throw;
             }
+        }
+        public void cateInit()
+        {
+            //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
+            string path = System.IO.Path.Combine(folder, datafolder);
+            var connection = new SQLiteConnection(path);
+            string uID = GetLoginCheck()[0].userID;
+            if (connection.Table<CategoryClass>().ToList().Count == 0)
+            {
+                CategoryClass category = new CategoryClass();
+                category.categoryType = "Income";
+                category.categoryImg = "icon_0.png";
+                category.categoryName = "Scholarship";
+                category.userID = uID;
+                AddNewCategory(category);
 
-            
+                category.categoryImg = "icon_26.png";
+                category.categoryName = "Salary";
+                AddNewCategory(category);
+
+                category.categoryImg = "icon_48.png";
+                category.categoryName = "Save Money";
+                AddNewCategory(category);
+
+                category.categoryType = "Expense";
+                category.categoryImg = "icon_12.png";
+                category.categoryName = "Food";
+                AddNewCategory(category);
+
+                category.categoryImg = "icon_34.png";
+                category.categoryName = "Water Bill";
+                AddNewCategory(category);
+
+                category.categoryImg = "icon_36.png";
+                category.categoryName = "Gas Bill";
+                AddNewCategory(category);
+            }
+        }
+        public void CateIconClassInit()
+        {
+            string path = System.IO.Path.Combine(folder, datafolder);
+            var connection = new SQLiteConnection(path);
+            if (connection.Table<CateIconClass>().ToList().Count == 0)
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    string img = "icon_" + i.ToString() + ".png";
+                    CateIconClass cateicon = new CateIconClass();
+                    cateicon.IconImage = img;
+                    connection.Insert(cateicon);
+                }
+            }
+
+        }
+        public List<CateIconClass> GetAllCateIcon()
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, datafolder);
+                var connection = new SQLiteConnection(path);
+
+                return connection.Table<CateIconClass>().ToList();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         public bool AddNewCategory(CategoryClass category)
         {
@@ -162,22 +229,6 @@ namespace BudgetApp
                 var connection = new SQLiteConnection(path);
                 string year = DateTime.Now.Year.ToString();
                 return connection.Query<DetailTransactionClass>("select * from DetailTransactionClass where transactionDay is not null");
-
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public List<CategoryClass> GetAllCategory()
-        {
-            try
-            {
-                string path = System.IO.Path.Combine(folder, datafolder);
-                var connection = new SQLiteConnection(path);
-                string year = DateTime.Now.Year.ToString();
-                return connection.Query<CategoryClass>("select * from CategoryClass where categoryName is not null");
 
             }
             catch
@@ -357,21 +408,18 @@ namespace BudgetApp
             {
                 TransactionDatabase db = new TransactionDatabase();
 
-                List<CategoryClass> allCategory = db.GetAllCategory();
+                List<CategoryClass> allCategory = db.GetAllCategoryClasses();
 
                 foreach (CategoryClass category in allCategory)
                 {
                     DeleteCategory(category);
                 }
-
                 return true;
             }
             catch
             {
                 return false;
             }
-
-
         }
 
         public bool AddNewLoginCheck(LoginCheckClass loginInf)

@@ -13,29 +13,52 @@ namespace BudgetApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditCategoryPage : ContentPage
     {
-        
-       
+
+        List<CategoryClass> categoryClasses = new List<CategoryClass>();
+        TransactionDatabase db = new TransactionDatabase();
+        bool IsDuplicate = false;
+        string cName;
+        CategoryClass category;
         public EditCategoryPage()
         {
             InitializeComponent();
         }
-        CategoryClass category;
+        
         public EditCategoryPage(CategoryClass category)
         {
             InitializeComponent();
+            categoryClasses = db.GetAllCategoryClasses();
+            this.category = category;
             CateIcon.Source = category.categoryImg;
             CateEntry.Text = category.categoryName;
+            cName = category.categoryName;
             Typelbl.Text = category.categoryType;
-            this.category = category;
-        }    
+            
+        }
+        public bool checkDuplicate(string entryCateName)
+        {
+            foreach (CategoryClass cate in categoryClasses)
+            {
+                if (cate.categoryName == entryCateName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private void CateIcon_Clicked(object sender, EventArgs e)
         {
+            category.categoryName = CateEntry.Text;
             Navigation.PushAsync(new SelectCateIconPage(category));
         }
 
         private async void EditCateBtn_Clicked(object sender, EventArgs e)
         {
-            if (CateEntry.Text != null)
+            if (string.IsNullOrEmpty(CateEntry.Text) || (TexInput.HasError == true))
+            {
+                DisplayAlert("Fail", "Edit fail", "OK");
+            }
+            else
             {
                 category.categoryName = CateEntry.Text;
                 TransactionDatabase db = new TransactionDatabase();
@@ -47,8 +70,8 @@ namespace BudgetApp
                         a.transactionName = category.categoryName;
                         a.icon = category.categoryImg;
                         db.UpdateTransaction(a);
-                    }    
-                    await DisplayAlert("Successful", "Update category successfully", "OK");
+                    }
+                    //await DisplayAlert("Successful", "Update category successfully", "OK");
                     Application.Current.MainPage = new AppShell(category.categoryType);
 
                 }
@@ -56,10 +79,7 @@ namespace BudgetApp
                 {
                     DisplayAlert("Fail", "Update category failed", "OK");
                 }
-            }
-            else
-            {
-                DisplayAlert("Fail", "Please type full information", "OK");
+               
             }
         }
 
@@ -106,6 +126,28 @@ namespace BudgetApp
                     }
                 }    
             }
+        }
+
+        private void CateEntry_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            
+            if (CateEntry.Text != cName)
+            {
+                IsDuplicate = checkDuplicate(CateEntry.Text);
+                if (IsDuplicate)
+                {
+                    TexInput.HasError = true;
+                }
+                else
+                {
+                    TexInput.HasError = false;
+                }
+            }
+            else
+            {
+                TexInput.HasError = false;
+            }
+            
         }
     }
 }

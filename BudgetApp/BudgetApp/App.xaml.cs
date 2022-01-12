@@ -15,10 +15,11 @@ namespace BudgetApp
         public App()
         {
             InitializeComponent();
-            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9NTU0NDEwQDMxMzkyZTM0MmUzMGRlRjJCL1k2SHNKSXcrMDdGbUJVc2F4T1c4TU15dzMrc1Vxck5GcjN1eEU9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTYyMDQxQDMxMzkyZTM0MmUzMEdsbjU4NzJHMWxQOXBwT1RTTzF1a0VoVWdhSnZlYTViby9LWG85ZXNqbU09");
             TransactionDatabase db = new TransactionDatabase();
             Console.WriteLine(db.CreateDatabase());
-
+            db.CateIconClassInit();
             //myAuth = DependencyService.Get<MyFirebaseAuthentication>();
 
             List<LoginCheckClass> check = db.GetLoginCheck();
