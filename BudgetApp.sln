@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetApp.Android", "BudgetApp\BudgetApp.Android\BudgetApp.Android.csproj", "{D87F07ED-FAF4-44FD-81D1-02B40D03EDBB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetApp.iOS", "BudgetApp\BudgetApp.iOS\BudgetApp.iOS.csproj", "{77491A1A-2AC9-497A-8AB2-B81E94E0F5A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetApp", "BudgetApp\BudgetApp\BudgetApp.csproj", "{87636054-83A8-49EF-AE7A-88828281707F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetApp", "BudgetApp\BudgetApp\BudgetApp.csproj", "{87636054-83A8-49EF-AE7A-88828281707F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
