@@ -92,13 +92,12 @@ namespace BudgetApp
             List<DetailTransactionClass> db_transactions = db.GetAllTransaction();
 
             List<int> db_bID = new List<int>();
-
-            foreach(DetailTransactionClass transaction in db_transactions)
+            foreach (DetailTransactionClass transaction in db_transactions)
             {
                 db_bID.Add(transaction.bID);
             }
-
-            foreach(DetailTransactionClass transaction in fb_transactions)
+           
+            foreach (DetailTransactionClass transaction in fb_transactions)
             {
                 if(db_bID.IndexOf(transaction.bID) == -1)
                 {

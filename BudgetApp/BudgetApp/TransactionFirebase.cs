@@ -14,7 +14,7 @@ namespace BudgetApp
     class TransactionFirebase
     {
         List<string> allYear = new List<string>();
-        FirebaseClient firebase = new FirebaseClient("https://mybuget-vinhlinh-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseClient firebase = new FirebaseClient("https://newbudgetapp-vinhlinh-default-rtdb.asia-southeast1.firebasedatabase.app/");
         string year = DateTime.Now.Year.ToString();
         MyFirebaseAuthentication myAuth;
 
@@ -90,7 +90,6 @@ namespace BudgetApp
                         userID = item.Object.userID,
                         cateID = item.Object.cateID
                     }).ToList();
-
                 return allTransaction;
             }
             catch

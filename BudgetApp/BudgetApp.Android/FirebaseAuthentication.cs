@@ -20,19 +20,19 @@ namespace BudgetApp.Droid
     {
         public string GetUid()
         {
-            var user = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid;
+            var user = FirebaseAuth.Instance.CurrentUser.Uid;
             return user;
         }
 
         public string GetUname()
         {
-            var username = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;
+            var username = FirebaseAuth.Instance.CurrentUser;
             return username.Email;
         }
 
         public bool IsSignIn()
         {
-            var user = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;
+            var user = FirebaseAuth.Instance.CurrentUser;
             return user != null;
         }
 
@@ -40,7 +40,7 @@ namespace BudgetApp.Droid
         {
             try
             {
-                var User = await Firebase.Auth.FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+                var User = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
                 var token = User.User.Uid;
                 return token;
             }
@@ -60,7 +60,7 @@ namespace BudgetApp.Droid
         {
             try
             {
-                Firebase.Auth.FirebaseAuth.Instance.SignOut();
+                FirebaseAuth.Instance.SignOut();
                 return true;
             }
             catch (Exception e)
