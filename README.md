@@ -1,14 +1,14 @@
 # **MY BUDGET APP**
 ## GIỚI THIỆU MÔN HỌC
 <a name="gioithieumonhoc"></a>
-* **Tên môn học**: Công nghệ lập trình đa nền tảng trên thiết bị di động
-* **Mã môn học**: IE307
-* **Lớp học**: IE307.M11
+* **Tên môn học**: Phát triển ứng dụng đa phương tiện trên thiết bị di động
+* **Mã môn học**: CS526
+* **Lớp học**: CS526.M21
 * **Năm học**: 2020-2021
 
 ## GIẢNG VIÊN HƯỚNG DẪN
 <a name="giangvien"></a>
-* ThS. **Võ Ngọc Tân** *tanvn@uit.edu.vn*
+* ThS. **Phạm Nguyễn Trường An** *tanvn@uit.edu.vn*
 
 ## THÀNH VIÊN NHÓM
 <a name="thanhvien"></a>
