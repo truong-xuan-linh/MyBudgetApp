@@ -4,7 +4,7 @@
 * **Tên môn học**: Phát triển ứng dụng đa phương tiện trên thiết bị di động
 * **Mã môn học**: CS526
 * **Lớp học**: CS526.M21
-* **Năm học**: 2020-2021
+* **Năm học**: 2021-2022
 
 ## GIẢNG VIÊN HƯỚNG DẪN
 <a name="giangvien"></a>
