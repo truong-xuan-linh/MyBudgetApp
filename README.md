@@ -34,7 +34,7 @@ Sử dụng điện thoại cài đặt file apk và chạy
 
 3. Clone github
 ```
-git clone 
+git clone https://github.com/truong-xuan-linh/MyBudgetApp.git
 ```
 4. Mở thư mục MyBudgetApp vừa clone về và mở BudgetApp.sln
 ![image](https://user-images.githubusercontent.com/79902816/173738754-47bc5696-d268-44d1-b378-c35d5464545e.png)
