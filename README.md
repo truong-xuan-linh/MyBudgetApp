@@ -21,3 +21,34 @@
 
 ## BUILD VÀ CHẠY SOURCE CODE
 <a name="buildandrun"></a>
+
+**CÁCH 1: Chạy bằng file apk**
+
+Sử dụng điện thoại cài đặt file apk và chạy
+
+**CÁCH 2: Chạy qua Visual Studio 2022**
+
+1. Tải Visual Studio 2022 tại link https://visualstudio.microsoft.com/downloads/
+2. Cài đặt và tích vào Mobile development with .NET, sau đó install
+![Screenshot 2022-06-15 113156](https://user-images.githubusercontent.com/79902816/173737491-146e28b9-9025-421f-8208-2f8766494cf9.jpg)
+
+3. Clone github
+```
+git clone 
+```
+4. Mở thư mục MyBudgetApp vừa clone về và mở BudgetApp.sln
+![image](https://user-images.githubusercontent.com/79902816/173738754-47bc5696-d268-44d1-b378-c35d5464545e.png)
+5. Cài đặt máy ảo
+
+ Android Emulator -> New -> Create -> Start
+ 
+![Screenshot 2022-06-15 115326](https://user-images.githubusercontent.com/79902816/173748530-66833fbf-80a9-49dc-9577-7acdd19065c1.jpg)
+
+![Screenshot 2022-06-15 115341](https://user-images.githubusercontent.com/79902816/173748548-12dac79a-653f-463a-8344-b296cfe564e4.jpg)
+
+![Screenshot 2022-06-15 115354](https://user-images.githubusercontent.com/79902816/173748563-9a491222-5a36-42ee-a2f3-23152fdb3347.jpg)
+
+![Screenshot 2022-06-15 115410](https://user-images.githubusercontent.com/79902816/173748579-fe2a4cae-f105-4a6f-92f6-b93631f843b6.jpg)
+
+
+
