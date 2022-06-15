@@ -22,11 +22,12 @@
 ## BUILD VÀ CHẠY SOURCE CODE
 <a name="buildandrun"></a>
 
-**CÁCH 1: Chạy bằng file apk**
+### CÁCH 1: Tải và chạy file apk
 
-Sử dụng điện thoại cài đặt file apk và chạy
+Tải file APK ứng dụng về điện thoại và cài đặt.
+**Lưu ý:** tắt các trình duyệt virus trên máy (CH Play protect, ...)
 
-**CÁCH 2: Chạy qua Visual Studio 2022**
+### CÁCH 2: Chạy qua Visual Studio 2022**
 
 1. Tải Visual Studio 2022 tại link https://visualstudio.microsoft.com/downloads/
 2. Cài đặt và tích vào Mobile development with .NET, sau đó install
