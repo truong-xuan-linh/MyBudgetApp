@@ -50,5 +50,10 @@ git clone
 
 ![Screenshot 2022-06-15 115410](https://user-images.githubusercontent.com/79902816/173748579-fe2a4cae-f105-4a6f-92f6-b93631f843b6.jpg)
 
+6. Chạy và tận hưởng
+ 
+Click vào Pixel 5 - API 30 (Android 11.0 - API 30) để chạy và chờ một ít phút để máy cấu hình
+
+![image](https://user-images.githubusercontent.com/79902816/173752786-4e1558c7-1e86-464d-bbe8-a800503bed7e.png)
 
 
