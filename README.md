@@ -24,7 +24,8 @@
 
 ### CÁCH 1: Tải và chạy file apk
 
-Tải file APK ứng dụng về điện thoại và cài đặt.
+Tải file APK ứng dụng về điện thoại và cài đặt. [Click here](my_budget.apk)
+
 **Lưu ý:** tắt các trình duyệt virus trên máy (CH Play protect, ...)
 
 ### CÁCH 2: Chạy qua Visual Studio 2022**
