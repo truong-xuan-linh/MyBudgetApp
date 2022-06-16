@@ -28,7 +28,7 @@ Tải file APK ứng dụng về điện thoại và cài đặt. [Click here](m
 
 **Lưu ý:** tắt các trình diệt virus trên máy (CH Play protect, ...)
 
-### CÁCH 2: Chạy qua Visual Studio 2022**
+### CÁCH 2: Chạy qua Visual Studio 2022
 
 1. Tải Visual Studio 2022 tại link https://visualstudio.microsoft.com/downloads/
 2. Cài đặt và tích vào Mobile development with .NET, sau đó install
