@@ -8,7 +8,7 @@
 
 ## GIẢNG VIÊN HƯỚNG DẪN
 <a name="giangvien"></a>
-* ThS. **Phạm Nguyễn Trường An** *antnp@uit.edu.vn*
+* ThS. **Phạm Nguyễn Trường An** *truonganpn@uit.edu.vn*
 
 ## THÀNH VIÊN NHÓM
 <a name="thanhvien"></a>
