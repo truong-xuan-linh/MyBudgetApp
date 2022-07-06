@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "743102972714",
-    "project_id": "newbudgetapp-vinhlinh",
-    "storage_bucket": "newbudgetapp-vinhlinh.appspot.com"
+    "project_number": "849782280513",
+    "project_id": "mybudget-b36ef",
+    "storage_bucket": "mybudget-b36ef.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:743102972714:android:f0e59ed7c22f1757ca9453",
+        "mobilesdk_app_id": "1:849782280513:android:0a12c52cafa8ba4a7811c0",
         "android_client_info": {
           "package_name": "com.companyname.budgetapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "743102972714-qobtdv3hn4jeaminp9cqdus0fulsa52g.apps.googleusercontent.com",
+          "client_id": "849782280513-mjlaskrta0tug2i3puf3h2kvqeir0erq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDs5_AKWJmA-IjTXUs_szTu9q8jpqpi3k8"
+          "current_key": "AIzaSyDvESvOZIHgk4rIVRQ0IeDcskvtq76gPyM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "743102972714-qobtdv3hn4jeaminp9cqdus0fulsa52g.apps.googleusercontent.com",
+              "client_id": "849782280513-mjlaskrta0tug2i3puf3h2kvqeir0erq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

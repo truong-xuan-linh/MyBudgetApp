@@ -14,7 +14,7 @@ namespace BudgetApp
     class TransactionFirebase
     {
         List<string> allYear = new List<string>();
-        FirebaseClient firebase = new FirebaseClient("https://newbudgetapp-vinhlinh-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseClient firebase = new FirebaseClient("https://mybudget-b36ef-default-rtdb.asia-southeast1.firebasedatabase.app/");
         string year = DateTime.Now.Year.ToString();
         MyFirebaseAuthentication myAuth;
 
