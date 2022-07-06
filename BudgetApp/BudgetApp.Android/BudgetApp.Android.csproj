@@ -54,9 +54,7 @@
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidSupportedAbis />
-    <AndroidKeyStore>false</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\ASUS\AppData\Local\Xamarin\Mono for Android\Keystore\MyBudget\MyBudget.keystore</AndroidSigningKeyStore>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
